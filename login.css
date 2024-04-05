@@ -1,0 +1,153 @@
+:root {
+    --hover-color: #d9a8a5;
+    --font-black: #000000;
+    --font-azulEsc: #8d0707;
+    --botao: #8d0707;
+    --fundo-escuro: #8d0707;
+    --fundo-claro: #f45c5c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#interface {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    background-color: #8d0707;
+}
+
+h1 {
+    font-size: 4.5em;
+    color: white;
+}
+
+#areaLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to left, var(--fundo-claro), var(--fundo-escuro));
+    width: 50%;
+    height: 100vh;
+}
+
+#boxLogin {
+    border-radius: 25px;
+    width: 50%;
+    height: 330px;
+    background: white;
+}
+
+#areaCampos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.campos {
+    width: 75%;
+    height: 45px;
+    margin: 20px auto;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    color: var(--font-azulEsc);
+}
+
+::-webkit-input-placeholder {
+    color: var(--font-azulEsc);
+}
+
+.campos {
+    border-bottom: var(--font-azulEsc) 1.5px solid;
+}
+
+#manterConectado {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 75%;
+}
+
+#manterConectado label {
+    color: var(--font-azulEsc);
+}
+
+#botao {
+    width: 75%;
+    height: 45px;
+    margin: 20px auto;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 15px;
+    background-color: var(--botao);
+}
+
+#botao:hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
+p {
+    color: var(--font-azulEsc);
+}
+
+a {
+    color: var(--font-azulEsc);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+@media (max-width: 950px) {
+    #interface {
+        flex-direction: column;
+    }
+
+    #logo {
+        width: 100%;
+        height: auto;
+        padding-top: 5em;
+    }
+
+    #areaLogin {
+        background:  linear-gradient(to top, var(--fundo-claro), var(--fundo-escuro));
+        width: 100%;
+        height: 85vh;
+    }
+}
+
+@media (max-width: 600px) {
+    #boxLogin {
+        width: 85%;
+        height: 370px;
+    }
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 350px) {
+    h1 {
+        font-size: 2.5em;
+    }
+}
