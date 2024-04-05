@@ -1,0 +1,95 @@
+CREATE TABLE usuario(
+
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha   VARCHAR(10) NOT NULL  primary key,
+    biografia int NOT NULL,
+    FKcompatibilidade  int NOT NULL,
+    FKbloqueados int NOT NULL,
+    FKamigos int NOT NULL,
+    FKendereco int NOT NULL,
+    FKencontro int NOT NULL,
+    FKagendaEncontro int NOT NULL
+    
+);
+CREATE TABLE biografia(
+   cod  int auto_increment primary key,
+    idade VARCHAR(50) NOT NULL,
+    profissao VARCHAR(100) NOT NULL ,
+    altura  VARCHAR(50) NOT NULL,
+    cabelo VARCHAR(50) NOT NULL,
+   olho VARCHAR(50) NOT NULL,
+   tatuagem VARCHAR(50) NOT NULL,
+   piercing VARCHAR(50) NOT NULL,
+   estilo VARCHAR(50) NOT NULL,
+   sexualidade VARCHAR(50) NOT NULL 
+) ;
+
+
+CREATE TABLE compatibilidade(
+   cod  int auto_increment primary key,
+    posicaoPolitica VARCHAR(50) NOT NULL,
+    religiao VARCHAR(100) NOT NULL ,
+    gostoMusical  VARCHAR(50) NOT NULL,
+  parceiroIdeal VARCHAR(50) NOT NULL,
+  gostoLiterario VARCHAR(50) NOT NULL,
+  lugarFavorito VARCHAR(50) NOT NULL,
+   hobby VARCHAR(50) NOT NULL
+) ;
+
+
+CREATE TABLE bloqueados(
+   cod  int auto_increment primary key,
+    nome VARCHAR(50) NOT NULL,
+    qtdBloqueados VARCHAR(100) NOT NULL
+) ;
+
+CREATE TABLE amigos(
+   cod  int auto_increment primary key,
+    nome VARCHAR(50) NOT NULL,
+    qtdAmigos VARCHAR(100) NOT NULL ,
+    dtAmizade date NOT NULL
+) ;
+
+CREATE TABLE endereco(
+   cod  int auto_increment primary key,
+    rua VARCHAR(50) NOT NULL,
+    bairro VARCHAR(100) NOT NULL ,
+    lote VARCHAR(100) NOT NULL,
+    quadra VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL
+) ;
+
+CREATE TABLE encontro(
+   cod  int auto_increment primary key,
+     dat VARCHAR(50) NOT NULL,
+    lugar VARCHAR(50) NOT NULL ,
+    horario VARCHAR(50) NOT NULL,
+    nome1 VARCHAR(50) NOT NULL,
+   nome2 VARCHAR(50) NOT NULL
+) ;
+
+CREATE TABLE agendaEncontro(
+   cod  int auto_increment primary key,
+     qtdEncontro VARCHAR(50) NOT NULL,
+    dtEncontro VARCHAR(50) NOT NULL ,
+    nome1 VARCHAR(50) NOT NULL,
+   nome2 VARCHAR(50) NOT NULL
+) ;
+
+
+ALTER TABLE usuario ADD FOREIGN KEY usuario_biografia(biografia)
+REFERENCES biografia(cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_compatibilidade(FKcompatibilidade)
+REFERENCES compatibilidade (cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_bloqueados(FKbloqueados)
+REFERENCES bloqueados (cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_amigos(FKamigos)
+REFERENCES amigos (cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_endereco(FKendereco)
+REFERENCES endereco (cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_encontro(FKencontro)
+REFERENCES encontro (cod);
+ALTER TABLE usuario ADD FOREIGN KEY usuario_agendaEncontro(FKagendaEncontro)
+REFERENCES agendaEncontro (cod);
