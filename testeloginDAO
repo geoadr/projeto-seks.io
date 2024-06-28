@@ -1,0 +1,38 @@
+<?php
+class loginDAO {
+    public $email;
+    public $senha;
+
+    public function consultarTodos() {
+        $objeto = new Conexao();
+        $sql = "SELECT email, senha,FROM login";
+        $objeto->set("sql", $sql);
+        return $objeto->query();
+    }
+
+    public function cadastrar() {
+        $objeto = new Conexao();
+        $SQL = "INSERT INTO login (email, senha,)
+                VALUES ( '$this->email', '$this->senha')";
+        $objeto->set("sql", $SQL);
+        $objeto->query();
+        return "Cadastrado com Sucesso";
+    }    
+
+    public function alterar() {
+        $objeto = new Conexao();
+        $SQL = "UPDATE login SET 
+                email='$this->email', 
+                senha='$this->senha', 
+                WHERE idlogin= {SELECT}";        
+        $objeto->set("sql", $SQL);
+        $objeto->query();
+        return "Alterado com Sucesso";
+    }      
+
+    public function set($prop, $value) {
+        $this->$prop = $value;
+    }
+}
+?>
+
