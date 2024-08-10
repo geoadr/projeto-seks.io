@@ -12,12 +12,13 @@
             margin: 0;
             padding: 0;
         }
-        .header {
-            background-color: #0064a7;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
+        h1 {
+  text-align: center;
+  color: #ff00ff; 
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px #000000; 
+}
         .container {
             width: 80%;
             max-width: 600px;
@@ -27,6 +28,7 @@
             border: 2px solid #0000ff; 
             border-radius: 15px; 
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+
         }
         .footer {
             background-color: #0064a7;
