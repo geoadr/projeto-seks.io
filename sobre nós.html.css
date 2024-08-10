@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Seks.io</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #d0e6f7;
+             color: #000000; 
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0064a7;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f8ff; 
+            border: 2px solid #0000ff; 
+            border-radius: 15px; 
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+        }
+        .footer {
+            background-color: #0064a7;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        h1, h2 {
+            color:#ff00ff;
+        }
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>About Us</h1>
+    </div>
+    <div class="container">
+        <h2>Who are we?</h2>
+        <p>Bem-vindo ao seks.io, um espaço digital dedicado à conexão e comunidade, inspirado pelo espírito de redes sociais como o Orkut. Nós, os criadores por trás deste projeto, somos um grupo diversificado de seis mentes criativas apaixonadas por tecnologia e por criar espaços de interação significativos na internet.</p>
+        <h2>Our History</h2>
+        <p>O Seks.io foi fundado por um grupo de entusiastas da tecnologia e apaixonados por redes sociais que desejavam reviver o charme e a simplicidade das plataformas de redes sociais antigas. Combinamos o melhor da nostalgia com a inovação moderna para criar uma experiência de usuário que seja ao mesmo tempo familiar e refrescante. Composto por, Camila, Eduarda, Geovana, Ivo, Lara e Weikler, nossa equipe traz uma variedade de perspectivas e habilidades que nos permitem desenvolver uma plataforma inclusiva e acolhedora para todos os nossos usuários.</p>
+        <h2>Our Commitment</h2>
+        <p>Estamos comprometidos em oferecer um ambiente seguro e amigável para todos os nossos usuários. Trabalhamos continuamente para melhorar nossa plataforma e garantir que você tenha a melhor experiência possível.</p>
+    </div>
+    <div class="footer">
+        <a href="#">Lenguage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Need Help?</a>
+        <a href="#">Abut Us</a>
+        <a href="#">Profile</a>
+        <a href="#">Community</a>
+        <a href="#">Main Screen</a>
+        <a href="#">New account</a>
+    </div>
+</body>
+</html>
