@@ -20,13 +20,82 @@
             <input type="email" id="email" name="email" required>
 
             <label for="nova-senha">New Password :</label>
-            <input type="password" id="nova-senha" name="nova-senha" required>
+            <input type="password" id="nova_senha" name="nova_senha" required>
 
             <label for="confirmar-senha">Confirm Password:</label>
-            <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+            <input type="password" id="confirmar_senha" name="confirmar_senha" required>
 
-            <button type="submit">Save</button>
+            <button type="submit" name="save">Save</button>
         </form>
     </div>
 </body>
 </html>
+
+<style>
+    /* cadastro2.css */
+
+body {
+    background: #d0e6f7; /* Cinza claro típico dos anos 2000 */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte popular na época */
+    color: #000000; /* Texto preto para contraste */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f0f8ff; /* Fundo branco para o formulário */
+    border: 2px solid #0000ff; /* Borda azul para dar um destaque */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para efeito de profundidade */
+}
+
+h1 {
+    text-align: center;
+    color: #ff00ff; /* Cor roxa brilhante */
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #000000; /* Sombra do texto para um efeito pop */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000000; /* Azul para labels */
+}
+
+input {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #0000ff; /* Bordas azuis para os campos de input */
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra interna nos campos de input */
+    background: #e0e0e0; /* Fundo cinza claro nos campos de input */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background: #ff00ff; 
+    border: 1px solid #0000ff; 
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #ff66ff; 
+}
+
+</style>
