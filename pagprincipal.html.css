@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEKS.IO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Mensagens</a></li>
+                <li><a href="sugestoes.html">Amigos</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <h1>Bem-vindo ao SEKS.IO</h1>
+            <section class="photo-upload">
+                <h2>Postar Foto</h2>
+                <form id="uploadForm">
+                    <input type="file" id="upload" name="upload" accept="image/*" required>
+                    <input type="text" id="caption" name="caption" placeholder="Adicione uma legenda com emojis 😊" maxlength="100">
+                    <button type="submit">Postar</button>
+                </form>
+            </section>
+
+            <!-- Galeria de Fotos -->
+            <section class="photo-gallery">
+                <h2>Galeria de Fotos</h2>
+                <div class="photos" id="photoGallery">
+                    <!-- Fotos serão adicionadas aqui -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="footer">
+        <a href="#">Lenguage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Need Help?</a>
+        <a href="#">New account</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+ document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const fileInput = document.getElementById('upload');
+    const captionInput = document.getElementById('caption');
+    const file = fileInput.files[0];
+    const caption = captionInput.value;
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Criar um novo elemento de imagem
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Nova Foto';
+
+            // Criar um contêiner para a imagem
+            const photoItem = document.createElement('div');
+            photoItem.className = 'photo-item';
+
+            // Adicionar a legenda
+            if (caption) {
+                const captionElement = document.createElement('p');
+                captionElement.className = 'caption';
+                captionElement.textContent = caption;
+                photoItem.appendChild(captionElement);
+            }
+
+            // Criar um botão de apagar
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Apagar';
+            deleteButton.className = 'delete-button';
+            deleteButton.addEventListener('click', function() {
+                // Remover a foto ao clicar no botão
+                photoItem.remove();
+            });
+
+            // Adicionar imagem e botão ao contêiner
+            photoItem.appendChild(img);
+            photoItem.appendChild(deleteButton);
+
+            // Adicionar a nova foto à galeria
+            document.getElementById('photoGallery').appendChild(photoItem);
+
+            // Limpar o campo de legenda após a postagem
+            captionInput.value = '';
+        };
+        reader.readAsDataURL(file); // Ler o arquivo como uma URL
+    }
+});
+
+
+</script>
+
+<style>
+  
+
+body {
+    background-color: #d0e6f7;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #999;
+    padding: 20px;
+}
+
+/* Menu lateral */
+.sidebar {
+    width: 200px;
+    background: linear-gradient(to bottom, #00FFFF, #FF00FF);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #666;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    background-color: #FF00FF;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
+    background-color: #00FFFF;
+    color: #FF00FF;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.main-content h1 {
+    color: #FF00FF;
+    text-shadow: 1px 1px 2px #666;
+    margin-bottom: 20px;
+}
+
+.photo-upload {
+    background-color: #FF00FF;
+    padding: 15px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px #666;
+}
+
+.photo-upload h2 {
+    margin-bottom: 10px;
+}
+
+.photo-upload input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.photo-upload button {
+    background-color: #00FFFF;
+    color: #FF00FF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 0 10px #333;
+}
+
+.photo-upload button:hover {
+    background-color: #FFFFFF;
+    color: #FF00FF;
+}
+
+.photo-gallery {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #666;
+}
+
+.photo-gallery h2 {
+    color: #FF00FF;
+    text-shadow: 1px 1px 2px #666;
+    margin-bottom: 20px;
+}
+
+.photos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.photo-item {
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 0 10px #999;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.caption {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.photo-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.delete-button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+}
+
+.delete-button:hover {
+    background-color: #CC0000;
+}
+.footer {
+            background-color: #0064a7;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+
+</style>
