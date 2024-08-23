@@ -23,6 +23,7 @@
         <!-- Conteúdo principal -->
         <main class="main-content">
             <h1>Bem-vindo ao SEKS.IO</h1>
+
             <section class="photo-upload">
                 <h2>Postar Foto</h2>
                 <form id="uploadForm">
@@ -39,6 +40,18 @@
                     <!-- Fotos serão adicionadas aqui -->
                 </div>
             </section>
+
+            <!-- Seção para compartilhamento de textos -->
+            <section class="text-share">
+                <h2>Compartilhar Texto</h2>
+                <form id="textForm">
+                    <textarea id="sharedText" name="sharedText" rows="4" placeholder="Compartilhe seus pensamentos..."></textarea>
+                    <button type="submit">Compartilhar</button>
+                </form>
+                <div class="texts" id="textGallery">
+                    <!-- Textos compartilhados serão adicionados aqui -->
+                </div>
+            </section>
         </main>
     </div>
 
@@ -46,16 +59,15 @@
         <a href="#">Lenguage</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Need Help?</a>
-        <a href="#">New account</a>
+        <a href="cadastro2.html">New account</a>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
 
-
 <script>
- document.getElementById('uploadForm').addEventListener('submit', function(event) {
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
     const fileInput = document.getElementById('upload');
@@ -106,15 +118,44 @@
     }
 });
 
+document.getElementById('textForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
 
+    const textInput = document.getElementById('sharedText');
+    const text = textInput.value;
+
+    if (text) {
+        // Criar um novo elemento de texto
+        const textItem = document.createElement('div');
+        textItem.className = 'text-item';
+        textItem.textContent = text;
+
+        // Criar um botão de apagar
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Apagar';
+        deleteButton.className = 'delete-button';
+        deleteButton.addEventListener('click', function() {
+            // Remover o texto ao clicar no botão
+            textItem.remove();
+        });
+
+        // Adicionar o botão ao item de texto
+        textItem.appendChild(deleteButton);
+
+        // Adicionar o novo texto à galeria de textos
+        document.getElementById('textGallery').appendChild(textItem);
+
+        // Limpar o campo de texto após o compartilhamento
+        textInput.value = '';
+    }
+});
 </script>
 
 <style>
-  
-
+/* Estilos principais */
 body {
-    background-color: #d0e6f7;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E0E0E0;
+    font-family: 'Comic Sans MS', sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
@@ -125,18 +166,19 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #999;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #FF69B4;
     padding: 20px;
+    border: 5px solid #1E90FF;
 }
 
 /* Menu lateral */
 .sidebar {
     width: 200px;
-    background: linear-gradient(to bottom, #00FFFF, #FF00FF);
+    background: linear-gradient(to bottom, #FF69B4, #1E90FF);
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #666;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #FF69B4;
 }
 
 .sidebar ul {
@@ -155,14 +197,15 @@ body {
     font-weight: bold;
     padding: 10px;
     display: block;
-    background-color: #FF00FF;
+    background-color: #1E90FF;
     border-radius: 5px;
     text-align: center;
+    border: 2px solid #FF69B4;
 }
 
 .sidebar ul li a:hover {
-    background-color: #00FFFF;
-    color: #FF00FF;
+    background-color: #FF69B4;
+    color: #1E90FF;
 }
 
 /* Conteúdo principal */
@@ -173,84 +216,105 @@ body {
 }
 
 .main-content h1 {
-    color: #FF00FF;
-    text-shadow: 1px 1px 2px #666;
+    color: #FF69B4;
+    text-shadow: 2px 2px 5px #666;
     margin-bottom: 20px;
+    font-size: 36px;
 }
 
-.photo-upload {
-    background-color: #FF00FF;
+.photo-upload, .text-share {
+    background-color: #1E90FF;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #FFFFFF;
     margin-bottom: 20px;
-    box-shadow: 0 0 10px #666;
+    box-shadow: 0 0 15px #1E90FF;
 }
 
-.photo-upload h2 {
+.photo-upload h2, .text-share h2 {
     margin-bottom: 10px;
+    font-size: 24px;
+    text-shadow: 2px 2px 5px #000000;
 }
 
-.photo-upload input[type="file"] {
+.photo-upload input[type="file"],
+.text-share textarea {
     margin-bottom: 10px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #FF69B4;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
-.photo-upload button {
-    background-color: #00FFFF;
-    color: #FF00FF;
+.photo-upload button,
+.text-share button {
+    background-color: #FF69B4;
+    color: #FFFFFF;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 0 10px #333;
-}
-
-.photo-upload button:hover {
-    background-color: #FFFFFF;
-    color: #FF00FF;
-}
-
-.photo-gallery {
-    background-color: #FFFFFF;
-    padding: 20px;
     border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Comic Sans MS', sans-serif;
     box-shadow: 0 0 10px #666;
 }
 
-.photo-gallery h2 {
-    color: #FF00FF;
-    text-shadow: 1px 1px 2px #666;
-    margin-bottom: 20px;
+.photo-upload button:hover,
+.text-share button:hover {
+    background-color: #1E90FF;
+    color: #FF69B4;
 }
 
-.photos {
+.photo-gallery, .text-gallery {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #FF69B4;
+}
+
+.photo-gallery h2, .text-share h2 {
+    color: #FF69B4;
+    text-shadow: 2px 2px 5px #666;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.photos, .texts {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
 .photo-item {
-    background-color: #E0E0E0;
-    border-radius: 10px;
+    background-color: #F0F8FF;
+    border-radius: 15px;
     padding: 5px;
-    box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #FF69B4;
     position: relative;
     margin-bottom: 20px;
 }
 
+.text-item {
+    background-color: #666;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px #FF69B4;
+    margin-bottom: 20px;
+}
 
 .caption {
-    font-size: 14px;
+    font-size: 16px;
     color: #333;
     margin-top: 5px;
     text-align: center;
     word-wrap: break-word;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
 .photo-item img {
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .delete-button {
@@ -263,28 +327,33 @@ body {
     margin-top: 10px;
     display: block;
     width: 100%;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
 .delete-button:hover {
     background-color: #CC0000;
 }
+
 .footer {
-            background-color: #0064a7;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
+    background-color: #0064a7;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
 
 
 </style>
