@@ -28,7 +28,7 @@
         </div>
         <div class="chat-box">
             <div class="messages" id="messages">
-                
+                <!-- Mensagens serão adicionadas aqui -->
             </div>
             <div class="input-area">
                 <input type="text" id="messageInput" placeholder="Selecione um amigo para começar a conversar..." disabled>
@@ -48,6 +48,13 @@
         </div>
     </div>
     <script src="chat.js"></script>
+    <div class="footer">
+        <a href="#">Lenguage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Need Help?</a>
+        <a href="pagprincipal.html">Main Screen</a>
+        <a href="#">New account</a>
+    </div>
 </body>
 </html>
 <style>
@@ -185,5 +192,21 @@
         background: #f0f0f0;
         border-radius: 5px;
     }
-    
+    .footer {
+        background-color: #0064a7;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+    .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    .footer a:hover {
+        text-decoration: underline;
+    }
 </style>
