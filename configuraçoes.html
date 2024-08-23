@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Configurações</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="imagemlogin.png" alt="Logo" class="logo">
+        <h1 class="title">Configurações</h1>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#conta">Central de Conta</a></li>
+            <li><a href="#salvos">Salvos</a></li>
+            <li><a href="#arquivar">Arquivar</a></li>
+            <li><a href="#notificacoes">Notificações</a></li>
+            <li><a href="#privacidade">Privacidade da Conta</a></li>
+            <li><a href="#bloqueados">Bloqueados</a></li>
+            <li><a href="#idioma">Idioma</a></li>
+            <li><a href="#ajuda">Ajuda</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#desconectar">Desconectar</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: 100vh;
+    background-color: #E0E0E0;
+    font-family: 'Comic Sans MS', sans-serif;
+    overflow-x: hidden; 
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF; 
+    padding: 10px 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    z-index: 1000; 
+}
+
+.logo {
+    position: absolute; 
+    left: 20px;
+    width: 100px; 
+    height: auto;
+}
+
+.title {
+    color: #FF69B4; 
+    font-size: 1.5em; 
+    margin: 0; 
+    text-align: center; 
+}
+
+.sidebar {
+    width: 400px;
+    background: linear-gradient(to bottom, #FF69B4, #1E90FF);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #FF69B4;
+    height: auto; 
+    position: relative; 
+    margin-top: 70px; 
+    margin-bottom: 30px; 
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px;
+    display: block;
+    background-color: #1E90FF;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #FF69B4;
+}
+
+.sidebar ul li a:hover {
+    background-color: #FF69B4;
+    color: #1E90FF;
+}
+
+</style>
