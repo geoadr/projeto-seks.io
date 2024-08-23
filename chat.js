@@ -47,5 +47,5 @@ function insertEmoji(emoji) {
     const input = document.getElementById('messageInput');
     input.value += emoji;
     input.focus();
-    toggleEmojiPanel();  
+    toggleEmojiPanel();  // Fecha o painel de emojis após a seleção
 }
