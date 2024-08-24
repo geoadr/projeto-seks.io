@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Menu lateral -->
         <aside class="sidebar">
             <ul>
                 <li><a href="#">Início</a></li>
@@ -18,6 +19,8 @@
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </aside>
+
+        <!-- Conteúdo principal -->
         <main class="main-content">
             <h1>Bem-vindo ao SEKS.IO</h1>
 
@@ -25,70 +28,30 @@
                 <h2>Postar Foto</h2>
                 <form id="uploadForm">
                     <input type="file" id="upload" name="upload" accept="image/*" required>
-                    <div class="caption-wrapper">
-                        <textarea id="caption" name="caption" placeholder="Adicione uma legenda😊..." maxlength="100"></textarea>
-                        <button type="button" class="emoji-main" id="emojiMainUpload">😊</button>
-                        <div class="emoji-menu" id="emojiMenuUpload">
-                            <button type="button" class="emoji-button" data-emoji="😂">😂</button>
-                            <button type="button" class="emoji-button" data-emoji="❤️">❤️</button>
-                            <button type="button" class="emoji-button" data-emoji="😍">😍</button>
-                            <button type="button" class="emoji-button" data-emoji="🥳">🥳</button>
-                            <button type="button" class="emoji-button" data-emoji="😎">😎</button>
-                            <button type="button" class="emoji-button" data-emoji="🤔">🤔</button>
-                            <button type="button" class="emoji-button" data-emoji="😢">😢</button>
-                            <button type="button" class="emoji-button" data-emoji="🔥">🔥</button>
-                            <button type="button" class="emoji-button" data-emoji="🎉">🎉</button>
-                            <button type="button" class="emoji-button" data-emoji="👍">👍</button>
-                        </div>
+                    <div class="emoji-container">
+                        <input type="text" id="caption" name="caption" placeholder="Adicione uma legenda com emojis 😊" maxlength="100">
+                        <button type="button" id="emojiBtnCaption">😀</button>
                     </div>
                     <button type="submit">Postar</button>
                 </form>
             </section>
-            <section class="photo-gallery">
-                <h2>Galeria de Fotos</h2>
-                <div class="photos" id="photoGallery">
-                </div>
-            </section>
+            
+            <!-- Seção para compartilhamento de textos -->
             <section class="text-share">
                 <h2>Compartilhar Texto</h2>
                 <form id="textForm">
-                    <textarea id="sharedText" name="sharedText" rows="4" placeholder="Compartilhe seus pensamentos..."></textarea>
-                    <div class="emoji-wrapper">
-                        <button type="button" class="emoji-main" id="emojiMainText">😊</button>
-                        <div class="emoji-menu" id="emojiMenuText">
-                            <button type="button" class="emoji-button" data-emoji="😂">😂</button>
-                            <button type="button" class="emoji-button" data-emoji="❤️">❤️</button>
-                            <button type="button" class="emoji-button" data-emoji="😍">😍</button>
-                            <button type="button" class="emoji-button" data-emoji="🥳">🥳</button>
-                            <button type="button" class="emoji-button" data-emoji="😎">😎</button>
-                            <button type="button" class="emoji-button" data-emoji="🤔">🤔</button>
-                            <button type="button" class="emoji-button" data-emoji="😢">😢</button>
-                            <button type="button" class="emoji-button" data-emoji="🔥">🔥</button>
-                            <button type="button" class="emoji-button" data-emoji="🎉">🎉</button>
-                            <button type="button" class="emoji-button" data-emoji="👍">👍</button>
-                        </div>
+                    <div class="emoji-container">
+                        <textarea id="sharedText" name="sharedText" rows="4" placeholder="Compartilhe seus pensamentos..."></textarea>
+                        <button type="button" id="emojiBtnText">😀</button>
                     </div>
-                    
                     <button type="submit">Compartilhar</button>
                 </form>
                 <div class="texts" id="textGallery">
+                    <!-- Textos compartilhados serão adicionados aqui -->
                 </div>
             </section>
-        </main>
-    </div>
-
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">Lenguage</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Need Help?</a>
-                <a href="cadastro.html">New account</a>
-            </div>
-        </div>
-    </div>
+            
     
-
     <script src="script.js"></script>
 </body>
 </html>
@@ -105,58 +68,40 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
+            
             const img = document.createElement('img');
             img.src = e.target.result;
             img.alt = 'Nova Foto';
+
+            
             const photoItem = document.createElement('div');
             photoItem.className = 'photo-item';
+
+            
             if (caption) {
                 const captionElement = document.createElement('p');
                 captionElement.className = 'caption';
                 captionElement.textContent = caption;
                 photoItem.appendChild(captionElement);
             }
-            const likeButton = document.createElement('button');
-            likeButton.textContent = '👍 Curtir (0)';
-            likeButton.className = 'like-button';
-            let likes = 0;
-            likeButton.addEventListener('click', function() {
-                likes++;
-                likeButton.textContent = `👍 Curtir (${likes})`;
-            });
-            photoItem.appendChild(likeButton);
-            const dislikeButton = document.createElement('button');
-            dislikeButton.textContent = '👎 Descurtir (0)';
-            dislikeButton.className = 'dislike-button';
-            let dislikes = 0;
-            dislikeButton.addEventListener('click', function() {
-                dislikes++;
-                dislikeButton.textContent = `👎 Descurtir (${dislikes})`;
-            });
-            photoItem.appendChild(dislikeButton);
 
-            const saveButton = document.createElement('button');
-            saveButton.textContent = 'Salvar';
-            saveButton.className = 'save-button';
-            saveButton.addEventListener('click', function() {
-                const link = document.createElement('a');
-                link.href = img.src;
-                link.download = 'foto.jpg';
-                link.click();
-            });
-            photoItem.appendChild(saveButton);
-
-          
+            
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = '🗑️'; 
+            deleteButton.textContent = 'Apagar';
             deleteButton.className = 'delete-button';
             deleteButton.addEventListener('click', function() {
+                
                 photoItem.remove();
             });
 
+            
             photoItem.appendChild(img);
             photoItem.appendChild(deleteButton);
+
+           
             document.getElementById('photoGallery').appendChild(photoItem);
+
+            
             captionInput.value = '';
         };
         reader.readAsDataURL(file); 
@@ -165,320 +110,275 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
 
 document.getElementById('textForm').addEventListener('submit', function(event) {
     event.preventDefault(); 
-
     const textInput = document.getElementById('sharedText');
     const text = textInput.value;
 
     if (text) {
+    
         const textItem = document.createElement('div');
         textItem.className = 'text-item';
-        const textContent = document.createElement('p');
-        textContent.className = 'shared-text';
-        textContent.textContent = text;
-        textItem.appendChild(textContent);
+        textItem.textContent = text;
+
+        
         const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = '🗑️'; 
+        deleteButton.textContent = 'Apagar';
         deleteButton.className = 'delete-button';
         deleteButton.addEventListener('click', function() {
+           
             textItem.remove();
         });
+
         textItem.appendChild(deleteButton);
+
+        
         document.getElementById('textGallery').appendChild(textItem);
+
+        
         textInput.value = '';
     }
 });
-function toggleEmojiMenu(menuId, mainButtonId) {
-    const emojiMenu = document.getElementById(menuId);
-    const mainButton = document.getElementById(mainButtonId);
 
-    mainButton.addEventListener('click', function() {
-        emojiMenu.classList.toggle('visible');
+const emojis = ['😀', '😂', '😍', '🥺', '😎', '😢', '👍', '🙏', '💪', '🎉', '❤️'];
+
+function createEmojiPicker(button, inputField) {
+    const picker = document.createElement('div');
+    picker.className = 'emoji-picker';
+
+    emojis.forEach(emoji => {
+        const emojiButton = document.createElement('button');
+        emojiButton.textContent = emoji;
+        emojiButton.addEventListener('click', () => {
+            inputField.value += emoji;
+            picker.style.display = 'none';
+        });
+        picker.appendChild(emojiButton);
     });
 
-    emojiMenu.addEventListener('click', function(event) {
-        if (event.target.classList.contains('emoji-button')) {
-            const emoji = event.target.getAttribute('data-emoji');
-            if (menuId === 'emojiMenuText') {
-                document.getElementById('sharedText').value += emoji;
-            } else if (menuId === 'emojiMenuUpload') {
-                document.getElementById('caption').value += emoji;
-            }
-            emojiMenu.classList.remove('visible');
-        }
+    button.parentNode.appendChild(picker);
+
+    button.addEventListener('click', () => {
+        picker.style.display = picker.style.display === 'none' || picker.style.display === '' ? 'flex' : 'none';
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const captionInput = document.getElementById('caption');
+    const emojiBtnCaption = document.getElementById('emojiBtnCaption');
+    createEmojiPicker(emojiBtnCaption, captionInput);
 
-toggleEmojiMenu('emojiMenuText', 'emojiMainText');
-toggleEmojiMenu('emojiMenuUpload', 'emojiMainUpload');
+    const sharedTextInput = document.getElementById('sharedText');
+    const emojiBtnText = document.getElementById('emojiBtnText');
+    createEmojiPicker(emojiBtnText, sharedTextInput);
+});
+
 </script>
+
 <style>
 
+/* Estilo anos 2000 para SEKS.IO */
+
+/* Cores principais */
+:root {
+    --rosa: #ff69b4;
+    --azul: #00bfff;
+    --branco: #ffffff;
+    --preto: #000000;
+}
+
+/* Corpo da página */
 body {
-    background-color: #E0E0E0;
-    font-family: 'Comic Sans MS', sans-serif;
-    color: #333;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, var(--rosa), var(--azul));
+    color: var(--branco);
     margin: 0;
     padding: 0;
 }
 
+/* Container principal */
 .container {
     display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    border-radius: 15px;
-    box-shadow: 0 0 20px #FF69B4;
-    padding: 20px;
-    border: 5px solid #1E90FF;
+    flex-direction: row;
+    height: 100vh;
 }
 
+/* Menu lateral */
 .sidebar {
     width: 200px;
-    background: linear-gradient(to bottom, #FF69B4, #1E90FF);
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #FF69B4;
+    background-color: var(--rosa);
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
 }
 
 .sidebar ul li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .sidebar ul li a {
-    color: #FFFFFF;
     text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    display: block;
-    background-color: #1E90FF;
-    border-radius: 5px;
-    text-align: center;
-    border: 2px solid #FF69B4;
+    color: var(--branco);
+    font-size: 18px;
 }
 
 .sidebar ul li a:hover {
-    background-color: #FF69B4;
-    color: #1E90FF;
+    color: var(--azul);
+    text-shadow: 0px 0px 8px var(--branco);
 }
 
-
+/* Conteúdo principal */
 .main-content {
-    flex-grow: 1;
-    padding: 20px;
-    margin-left: 20px;
+    flex: 1;
+    padding: 40px;
+    background-color: var(--branco);
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 .main-content h1 {
-    color: #FF69B4;
-    text-shadow: 2px 2px 5px #666;
-    margin-bottom: 20px;
+    color: var(--rosa);
     font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px var(--azul);
 }
 
 .photo-upload, .text-share {
-    background-color: #1E90FF;
-    padding: 15px;
-    border-radius: 15px;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px #1E90FF;
+    margin-bottom: 30px;
 }
 
 .photo-upload h2, .text-share h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    text-shadow: 2px 2px 5px #000000;
+    color: var(--azul);
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px var(--rosa);
 }
 
-.photo-upload textarea,
-.text-share textarea {
-    margin-bottom: 10px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    border: 2px solid #FF69B4;
-    font-family: 'Comic Sans MS', sans-serif;
-    font-size: 16px;
-}
-
-.photo-upload button,
-.text-share button {
-    background-color: #FF69B4;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    font-family: 'Comic Sans MS', sans-serif;
-    box-shadow: 0 0 10px #666;
-}
-
-.photo-upload button:hover,
-.text-share button:hover {
-    background-color: #1E90FF;
-    color: #FF69B4;
-}
-
-.photo-gallery, .text-gallery {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #FF69B4;
-}
-
-.photo-gallery h2, .text-share h2 {
-    color: #FF69B4;
-    text-shadow: 2px 2px 5px #666;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.photos, .texts {
+/* Formulários */
+form {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.photo-item {
-    background-color: #F0F8FF;
-    border-radius: 15px;
-    padding: 5px;
-    box-shadow: 0 0 10px #FF69B4;
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.text-item {
-    background-color: #666;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 0 10px #FF69B4;
-    margin-bottom: 20px;
-}
-
-.caption, .shared-text {
+input[type="file"], input[type="text"], textarea {
+    padding: 10px;
+    border: 2px solid var(--rosa);
+    border-radius: 10px;
+    margin-bottom: 15px;
     font-size: 16px;
-    color: #333;
-    margin-top: 5px;
-    text-align: center;
-    word-wrap: break-word;
-    font-family: 'Comic Sans MS', sans-serif;
+    background-color: var(--branco);
+}
+
+button {
+    background-color: var(--rosa);
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    color: var(--branco);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--azul);
+    color: var(--preto);
+}
+
+/* Emoji picker */
+.emoji-container {
+    position: relative;
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: var(--azul);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.emoji-picker button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.emoji-picker button:hover {
+    transform: scale(1.2);
+}
+
+/* Itens de fotos e textos */
+.photo-item, .text-item {
+    background-color: var(--azul);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: var(--branco);
+    position: relative;
 }
 
 .photo-item img {
     max-width: 100%;
-    border-radius: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.like-button, .dislike-button, .save-button, .delete-button {
-    background-color: #FF0000;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-    font-family: 'Comic Sans MS', sans-serif;
-    font-size: 14px;
+.caption {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.like-button:hover, .dislike-button:hover, .save-button:hover, .delete-button:hover {
-    background-color: #CC0000;
-}
-
-
-.emoji-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.emoji-main {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.emoji-menu {
-    display: none;
+.delete-button {
     position: absolute;
-    background-color: #FFFFFF;
-    border: 1px solid #FF69B4;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 0 10px #666;
-    z-index: 1000;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.emoji-menu.visible {
-    display: flex;
-}
-
-.emoji-button {
-    font-size: 20px;
-    cursor: pointer;
-    background: none;
+    top: 10px;
+    right: 10px;
+    background-color: var(--preto);
     border: none;
+    color: var(--branco);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.emoji-button:hover {
-    background-color: #FF69B4;
-    color: #FFFFFF;
+.delete-button:hover {
+    background-color: var(--rosa);
 }
 
-
+/* Rodapé */
 .footer {
-    background-color: #1E90FF; 
-    color: #FFFFFF;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--rosa);
+    padding: 10px;
+    color: var(--branco);
     position: fixed;
-    width: 100%;
     bottom: 0;
-    font-family: 'Comic Sans MS', sans-serif;
-    border-top: 5px solid #FF69B4; 
+    width: 100%;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .footer a {
-    color: #FFFFFF;
+    color: var(--branco);
     text-decoration: none;
-    margin: 0 15px; 
-    font-size: 18px; 
+    font-size: 14px;
 }
 
 .footer a:hover {
-    text-decoration: underline;
-    color: #FF69B4;
-}
-
-.footer .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; 
-}
-
-.footer .footer-content .footer-links {
-    display: flex;
-    gap: 20px; 
-}
-
-.footer .footer-content .footer-links a {
-    font-size: 18px; 
+    color: var(--azul);
+    text-shadow: 0px 0px 5px var(--branco);
 }
 
 
-    </style>
+</style>
