@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="chat-header">
-            <h1>Chat</h1>
+    <header>
+        <div class="logo">
+            <img src="imagemlogin.png" alt="Logo" class="logo-img">
         </div>
+        <h1 class="title">Chat</h1>
+    </header>
+    <div class="container">
         <div class="friends-list">
-            <h2>Sugestões de Amigos</h2>
+            <h2>Conversas</h2>
             <div class="friend" onclick="selectFriend('Ana')">
                 <img src="https://via.placeholder.com/50" alt="Ana">
                 <span>Ana</span>
@@ -28,7 +31,6 @@
         </div>
         <div class="chat-box">
             <div class="messages" id="messages">
-                <!-- Mensagens serão adicionadas aqui -->
             </div>
             <div class="input-area">
                 <input type="text" id="messageInput" placeholder="Selecione um amigo para começar a conversar..." disabled>
@@ -60,7 +62,7 @@
 <style>
     body {
         font-family: 'Comic Sans MS', cursive, sans-serif;
-        background: linear-gradient(to right, #ff66b2, #66ccff);
+        background: #ffccff; /* Rosa bebê */
         margin: 0;
         padding: 0;
     }
@@ -192,21 +194,68 @@
         background: #f0f0f0;
         border-radius: 5px;
     }
+    
     .footer {
-        background-color: #0064a7;
+        background: linear-gradient(135deg, #ff69b4, #00bfff); 
         color: white;
-        padding: 10px;
+        padding: 15px;
         text-align: center;
         position: fixed;
         width: 100%;
         bottom: 0;
+        border-top: 3px dashed #ffccff; 
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
     }
+
     .footer a {
-        color: white;
+        color: #ffffff;
         text-decoration: none;
         margin: 0 10px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: #ff00ff; 
+        transition: background 0.3s, transform 0.3s;
     }
+
     .footer a:hover {
-        text-decoration: underline;
+        background: #ff66b2; 
+        transform: scale(1.1); 
+    }
+
+    .footer a:active {
+        transform: scale(1); 
+    }
+
+    header {
+        background: linear-gradient(135deg, #ff66cc, #00ccff);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .logo-img {
+        width: 150px;
+    }
+
+    .title {
+        font-size: 2.5em;
+        margin-top: 0;
+    }
+
+    .message {
+        font-size: 16px;
+        color: #333;
+        margin-top: 10px;
+        display: none;
     }
 </style>
