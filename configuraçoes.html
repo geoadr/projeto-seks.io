@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <div class="header">
         <img src="imagemlogin.png" alt="Logo" class="logo">
         <h1 class="title">Configurações</h1>
@@ -14,8 +15,6 @@
     <nav class="sidebar">
         <ul>
             <li><a href="central de conta.html">Central de Conta</a></li>
-            <li><a href="#salvos">Salvos</a></li>
-            <li><a href="#arquivar">Arquivar</a></li>
             <li><a href="#notificacoes">Notificações</a></li>
             <li><a href="#privacidade">Privacidade da Conta</a></li>
             <li><a href="#bloqueados">Bloqueados</a></li>
@@ -25,6 +24,7 @@
             <li><a href="#desconectar">Desconectar</a></li>
         </ul>
     </nav>
+    
 </body>
 </html>
 <style>
@@ -41,32 +41,34 @@
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #FFFFFF; 
-    padding: 10px 20px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    z-index: 1000; 
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffccff; 
+            padding: 15px 30px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            z-index: 1000; 
+            border-bottom: 5px solid #ff66b2;
+        }
 
-.logo {
-    position: absolute; 
-    left: 20px;
-    width: 115px; 
-    height: auto;
-}
+        .logo {
+            position: absolute; 
+            left: 20px;
+            width: 200px; 
+            height: auto;
+        }
 
-.title {
-    color: #FF69B4; 
-    font-size: 1.5em; 
-    margin: 0; 
-    text-align: center; 
-}
+        .title {
+            color: #ff3399; 
+            font-size: 2.5em; 
+            margin: 0; 
+            text-align: center; 
+            text-shadow: 3px 3px 6px #ff99cc;
+        }
 
 .sidebar {
     width: 400px;
@@ -76,7 +78,8 @@
     box-shadow: 0 0 15px #FF69B4;
     height: auto; 
     position: relative; 
-    margin-top: 70px; 
+    margin: 100Spx auto;
+    margin-top: 120px; 
     margin-bottom: 30px; 
 }
 
