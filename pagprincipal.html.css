@@ -404,7 +404,7 @@
                         <img src="${img.src}" alt="${caption}">
                         <p class="caption">${caption}</p>
                         <div class="like-dislike-buttons">
-                            <button class="like-button">👌 <span class="count">0</span></button>
+                            <button class="like-button">👍< <span class="count">0</span></button>
                             <button class="dislike-button">👎 <span class="count">0</span></button>
                             <button class="save-button">⬇️</button>
                             <button class="delete-button">🗑️</button>
