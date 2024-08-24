@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Conta - Site de Relacionamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imagemlogin.png" alt="Logo" class="logo-img">
+        </div>
+        <h1 class="title">Central de Conta</h1>
+    </header>
+    <main>
+        <nav class="sidebar">
+            <ul>
+                <li><a href="perfil.html">Meu Perfil</a></li>
+                <li><a href="chat.html">Mensagens</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
+                <li><a href="#ajuda">Ajuda</a></li>
+                <li><a href="#alterar-senha">Alterar Senha</a></li>
+                <li><a href="#sair">Sair</a></li>
+            </ul>
+        </nav>
+        <section class="content">
+            <h2>Bem-vindo à sua Central de Conta!</h2>
+            <p>Aqui você pode gerenciar todas as suas configurações e preferências.</p>
+
+            <div class="profile">
+                <div class="profile-header">
+                    <img src="fotopefil.jpeg" alt="Foto de Perfil" class="profile-pic">
+                    <div class="profile-info">
+                        <h3>Nome do Usuário</h3>
+                        <p>Este perfil foi criado dia 0/00/0000 às 00:00. Usuário: -------. Data de nascimento 0/00/0000. Idade: 00.</p>
+                    </div>
+                </div>
+                <button class="btn add-account">Adicionar Outra Conta</button>
+                <button class="btn share-profile" onclick="copyProfileLink()">Compartilhar Perfil</button>
+                <div id="notification" class="notification">Perfil copiado!</div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function copyProfileLink() {
+            const profileLink = "https://www.exemplo.com/perfil-do-usuario";
+            navigator.clipboard.writeText(profileLink).then(() => {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000); 
+            });
+        }
+    </script>
+</body>
+</html>
+<style>
+
+body, h1, h2, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #f0f8ff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #ff66cc, #00ccff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo-img {
+    width: 150px;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-top: 0;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background: #ffccff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 100px;
+    left: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #ff3399;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    background-color: #e6e6ff;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #ff3399;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ff3399;
+    color: #fff;
+}
+
+.content {
+    flex: 1;
+    margin-left: 300px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content h2 {
+    color: #ff66cc;
+}
+
+.content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.profile {
+    margin-top: 20px;
+    background: #ffccff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h3 {
+    margin-bottom: 10px;
+    color: #ff3399;
+}
+
+.profile-info p {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #ff66cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff3399;
+}
+
+.add-account {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.share-profile {
+    display: block;
+}
+
+.notification {
+    display: none;
+    padding: 10px;
+    background-color: #00ccff;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1em;
+}
+
+</style>
