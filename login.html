@@ -1,154 +1,132 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="login.css">
-    <title>Login</title>
+    <title>Privacidade da Conta</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div id="logo">
-<img src="imagemlogin.png" alt="">
-    </div>
-        <div id="areaLogin">
-            <div id="boxLogin">
-                <form>
-                    <div id="areaCampos">
-                        <!-- <input class="campos" type="text" placeholder="Nome do Usuário"> -->
-                        <input class="campos" type="email" placeholder="e-mail" name="email">
-                        <input class="campos" type="password" placeholder="Senha" name="senha">
-                        <div id="manterConectado">
-                            <input type="checkbox" id="conectado">&nbsp;
-                            <label for="conectado">Manter conectado</label>
-                        </div>
-                        <input type="submit" value="Entrar" id="botao"  name="botao">
-                        <p>É novo aqui?<a href="cadastro2.html"> Criar conta</a></p>
-                    </div>
+    <header>
+        <h1 class="title">Configurações de Privacidade</h1>
+    </header>
+    <div class="container">
+        <div class="privacy-settings">
+            <h2>Configuração da Conta</h2>
+            <div class="toggle">
+                <label for="accountPrivacy">Conta Pública</label>
+                <input type="checkbox" id="accountPrivacy" onclick="togglePrivacy()">
+                <label for="accountPrivacy">Conta Privada</label>
             </div>
-            </form>
+            <div class="description">
+                <p>Quando sua conta é pública, seu perfil e publicações podem ser vistos por qualquer pessoa, dentro ou fora do Seks.io, mesmo que as pessoas não tenham uma conta no Seks.io. Quando sua conta é privada, somente os seguidores que você aprovar podem ver o que você compartilha, como fotos ou vídeos em páginas de hashtag e de localização, bem como suas listas de seguidores e de quem você segue. Algumas informações no seu perfil, como foto do perfil e nome do usuário, ficam visíveis para todos, dentro e fora do Seks.io.</p>
+            </div>
         </div>
     </div>
+    <script>
+        function togglePrivacy() {
+            const isChecked = document.getElementById('accountPrivacy').checked;
+            alert(isChecked ? "Sua conta está agora privada." : "Sua conta está agora pública.");
+        }
+    </script>
+    <div class="footer">
+        <a href="#">Lenguage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Need Help?</a>
+        <a href="pagprincipal.html">Main Screen</a>
+        <a href="#">New account</a>
     </div>
 </body>
-
 </html>
 <style>
-    /* login.css */
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: #ffccff; 
+        margin: 0;
+        padding: 0;
+    }
 
-/* Geral */
-body {
-    background: #d0e6f7;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+    header {
+        background: linear-gradient(135deg, #ff66cc, #00ccff);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-/* Container principal */
-#interface {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #ffffff;
-    border: 2px solid #0000ff;
-    border-radius: 20px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .title {
+        font-size: 2em;
+        margin: 0;
+    }
 
-/* Logo */
-#logo {
-    margin: 20px 0;
-}
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+    }
 
-#logo img {
-    width: 600px; /* Aumentado a largura da imagem */
-    height: auto;
-}
+    .privacy-settings {
+        padding: 20px;
+    }
 
-/* Área de login */
-#areaLogin {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+    .privacy-settings h2 {
+        color: #ff3366;
+        margin-top: 0;
+    }
 
-/* Caixa de login */
-#boxLogin {
-    background: #f0f8ff;
-    border: 1px solid #0000ff;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 500px;
-}
+    .toggle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-/* Campos de entrada */
-.campos {
-    display: block;
-    width: calc(100% - 22px);
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #0000ff;
-    border-radius: 5px;
-    background: #ffffff;
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
+    .toggle label {
+        margin-right: 10px;
+        font-size: 18px;
+    }
 
-/* Checkbox e label */
-#manterConectado {
-    margin: 10px 0;
-}
+    .toggle input {
+        margin-right: 10px;
+    }
 
-#manterConectado input[type="checkbox"] {
-    margin-right: 5px;
-}
+    .description {
+        font-size: 16px;
+        color: #333;
+    }
 
-#manterConectado label {
-    font-size: 14px;
-    color: #0000ff;
-}
+    .footer {
+        background: linear-gradient(135deg, #ff69b4, #00bfff); 
+        color: white;
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        border-top: 3px dashed #ffccff; 
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-/* Botão de enviar */
-#botao {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #ffffff;
-    background: #ff00ff;
-    border: 2px solid #0000ff;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
+    .footer a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: #ff00ff; 
+        transition: background 0.3s, transform 0.3s;
+    }
 
-#botao:hover {
-    background: #ff66ff;
-}
+    .footer a:hover {
+        background: #ff66b2; 
+        transform: scale(1.1); 
+    }
 
-/* Link para criar conta */
-p {
-    margin-top: 20px;
-}
-
-p a {
-    color: #0000ff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-p a:hover {
-    text-decoration: underline;
-}
-
+    .footer a:active {
+        transform: scale(1); 
+    }
 </style>
