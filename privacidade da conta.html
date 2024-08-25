@@ -10,18 +10,33 @@
     <header>
         <h1 class="title">Configurações de Privacidade</h1>
     </header>
-    <div class="container">
-        <div class="privacy-settings">
-            <h2>Configuração da Conta</h2>
-            <div class="toggle">
-                <label for="accountPrivacy">Conta Pública</label>
-                <input type="checkbox" id="accountPrivacy" onclick="togglePrivacy()">
-                <label for="accountPrivacy">Conta Privada</label>
+    <div class="main-container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="perfil.html">Meu Perfil</a></li>
+                <li><a href="chat.html">Mensagens</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
+                <li><a href="#ajuda">Ajuda</a></li>
+                <li><a href="#alterar-senha">Alterar Senha</a></li>
+                <li><a href="#sair">Sair</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="container">
+                <div class="privacy-settings">
+                    <h2>Configuração da Conta</h2>
+                    <div class="toggle">
+                        <label for="accountPrivacy">Conta Pública</label>
+                        <input type="checkbox" id="accountPrivacy" onclick="togglePrivacy()">
+                        <label for="accountPrivacy">Conta Privada</label>
+                    </div>
+                    <div class="description">
+                        <p>Quando sua conta é pública, seu perfil e publicações podem ser vistos por qualquer pessoa, dentro ou fora do Seks.io, mesmo que as pessoas não tenham uma conta no Seks.io. Quando sua conta é privada, somente os seguidores que você aprovar podem ver o que você compartilha, como fotos ou vídeos em páginas de hashtag e de localização, bem como suas listas de seguidores e de quem você segue. Algumas informações no seu perfil, como foto do perfil e nome do usuário, ficam visíveis para todos, dentro e fora do Seks.io.</p>
+                    </div>
+                </div>
             </div>
-            <div class="description">
-                <p>Quando sua conta é pública, seu perfil e publicações podem ser vistos por qualquer pessoa, dentro ou fora do Seks.io, mesmo que as pessoas não tenham uma conta no Seks.io. Quando sua conta é privada, somente os seguidores que você aprovar podem ver o que você compartilha, como fotos ou vídeos em páginas de hashtag e de localização, bem como suas listas de seguidores e de quem você segue. Algumas informações no seu perfil, como foto do perfil e nome do usuário, ficam visíveis para todos, dentro e fora do Seks.io.</p>
-            </div>
-        </div>
+        </main>
     </div>
     <script>
         function togglePrivacy() {
@@ -40,93 +55,147 @@
 </html>
 <style>
     body {
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-        background: #ffccff; 
-        margin: 0;
-        padding: 0;
-    }
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #ffccff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-    header {
-        background: linear-gradient(135deg, #ff66cc, #00ccff);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+header {
+    background: linear-gradient(135deg, #ff66cc, #00ccff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    .title {
-        font-size: 2em;
-        margin: 0;
-    }
+.title {
+    font-size: 2em;
+    margin: 0;
+}
 
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        padding: 20px;
-    }
+.main-container {
+    display: flex;
+    flex: 1;
+    margin: 20px;
+}
 
-    .privacy-settings {
-        padding: 20px;
-    }
+.sidebar {
+    width: 250px;
+    background: #b66bb6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 100px;
+    left: 20px;
+}
 
-    .privacy-settings h2 {
-        color: #ff3366;
-        margin-top: 0;
-    }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    .toggle {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+.sidebar ul li {
+    margin-bottom: 15px;
+}
 
-    .toggle label {
-        margin-right: 10px;
-        font-size: 18px;
-    }
+.sidebar ul li a {
+    color: #d4277e;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    background-color: #e6e6ff;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #ff3399;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-    .toggle input {
-        margin-right: 10px;
-    }
+.sidebar ul li a:hover {
+    background-color: #af246a;
+    color: #fff;
+}
 
-    .description {
-        font-size: 16px;
-        color: #333;
-    }
+main {
+    flex: 1;
+    margin-left: 300px;
+    padding: 20px;
+}
 
-    .footer {
-        background: linear-gradient(135deg, #ff69b4, #00bfff); 
-        color: white;
-        padding: 15px;
-        text-align: center;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        border-top: 3px dashed #ffccff; 
-        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-    }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
 
-    .footer a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 10px;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 5px;
-        background: #ff00ff; 
-        transition: background 0.3s, transform 0.3s;
-    }
+.privacy-settings {
+    padding: 20px;
+}
 
-    .footer a:hover {
-        background: #ff66b2; 
-        transform: scale(1.1); 
-    }
+.privacy-settings h2 {
+    color: #ff3366;
+    margin-top: 0;
+}
 
-    .footer a:active {
-        transform: scale(1); 
-    }
+.toggle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toggle label {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.toggle input {
+    margin-right: 10px;
+}
+
+.description {
+    font-size: 16px;
+    color: #333;
+}
+
+.footer {
+    background: linear-gradient(135deg, #ff69b4, #00bfff);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 3px dashed #ffccff;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #ff00ff;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.footer a:hover {
+    background: #ff66b2;
+    transform: scale(1.1);
+}
+
+.footer a:active {
+    transform: scale(1);
+}
+
 </style>
