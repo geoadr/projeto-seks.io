@@ -1,112 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Configurações</title>
+    <title>Privacidade da Conta</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <div class="header">
-        <img src="imagemlogin.png" alt="Logo" class="logo">
-        <h1 class="title">Configurações</h1>
+    <header>
+        <h1 class="title">Configurações de Privacidade</h1>
+    </header>
+    <div class="container">
+        <div class="privacy-settings">
+            <h2>Configuração da Conta</h2>
+            <div class="toggle">
+                <label for="accountPrivacy">Conta Pública</label>
+                <input type="checkbox" id="accountPrivacy" onclick="togglePrivacy()">
+                <label for="accountPrivacy">Conta Privada</label>
+            </div>
+            <div class="description">
+                <p>Quando sua conta é pública, seu perfil e publicações podem ser vistos por qualquer pessoa, dentro ou fora do Instagram, mesmo que as pessoas não tenham uma conta no Instagram. Quando sua conta é privada, somente os seguidores que você aprovar podem ver o que você compartilha, como fotos ou vídeos em páginas de hashtag e de localização, bem como suas listas de seguidores e de quem você segue. Algumas informações no seu perfil, como foto do perfil e nome do usuário, ficam visíveis para todos, dentro e fora do Instagram.</p>
+            </div>
+        </div>
     </div>
-    <nav class="sidebar">
-        <ul>
-            <li><a href="central de conta.html">Central de Conta</a></li>
-            <li><a href="privacidade da conta.html">Privacidade da Conta</a></li>
-            <li><a href="#bloqueados">Bloqueados</a></li>
-            <li><a href="#idioma">Idioma</a></li>
-            <li><a href="#ajuda">Ajuda</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#desconectar">Desconectar</a></li>
-        </ul>
-    </nav>
-    
+    <script>
+        function togglePrivacy() {
+            const isChecked = document.getElementById('accountPrivacy').checked;
+            alert(isChecked ? "Sua conta está agora privada." : "Sua conta está agora pública.");
+        }
+    </script>
+    <div class="footer">
+        <a href="#">Lenguage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Need Help?</a>
+        <a href="pagprincipal.html">Main Screen</a>
+        <a href="#">New account</a>
+    </div>
 </body>
 </html>
 <style>
     body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; 
-    height: 100vh;
-    background-color: #E0E0E0;
-    font-family: 'Comic Sans MS', sans-serif;
-    overflow-x: hidden; 
-}
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: #ffccff; /* Rosa bebê */
+        margin: 0;
+        padding: 0;
+    }
 
-.header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffccff; 
-            padding: 15px 30px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-            z-index: 1000; 
-            border-bottom: 5px solid #ff66b2;
-        }
+    header {
+        background: linear-gradient(135deg, #ff66cc, #00ccff);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-        .logo {
-            position: absolute; 
-            left: 20px;
-            width: 200px; 
-            height: auto;
-        }
+    .title {
+        font-size: 2em;
+        margin: 0;
+    }
 
-        .title {
-            color: #ff3399; 
-            font-size: 2.5em; 
-            margin: 0; 
-            text-align: center; 
-            text-shadow: 3px 3px 6px #ff99cc;
-        }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+    }
 
-.sidebar {
-    width: 400px;
-    background: linear-gradient(to bottom, #FF69B4, #1E90FF);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #FF69B4;
-    height: auto; 
-    position: relative; 
-    margin: 100Spx auto;
-    margin-top: 120px; 
-    margin-bottom: 30px; 
-}
+    .privacy-settings {
+        padding: 20px;
+    }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+    .privacy-settings h2 {
+        color: #ff3366;
+        margin-top: 0;
+    }
 
-.sidebar ul li {
-    margin-bottom: 15px;
-}
+    .toggle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-.sidebar ul li a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 15px;
-    display: block;
-    background-color: #1E90FF;
-    border-radius: 5px;
-    text-align: center;
-    border: 2px solid #FF69B4;
-}
+    .toggle label {
+        margin-right: 10px;
+        font-size: 18px;
+    }
 
-.sidebar ul li a:hover {
-    background-color: #FF69B4;
-    color: #1E90FF;
-}
+    .toggle input {
+        margin-right: 10px;
+    }
 
+    .description {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .footer {
+        background: linear-gradient(135deg, #ff69b4, #00bfff); 
+        color: white;
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        border-top: 3px dashed #ffccff; 
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: #ff00ff; 
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    .footer a:hover {
+        background: #ff66b2; 
+        transform: scale(1.1); 
+    }
+
+    .footer a:active {
+        transform: scale(1); 
+    }
 </style>
