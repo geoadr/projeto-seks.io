@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Configurações</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="header">
+        <img src="imagemlogin.png" alt="Logo" class="logo">
+        <h1 class="title">Configurações</h1>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="central de conta.html">Central de Conta</a></li>
+            <li><a href="privacidade da conta.html">Privacidade da Conta</a></li>
+            <li><a href="#bloqueados">Bloqueados</a></li>
+            <li><a href="#idioma">Idioma</a></li>
+            <li><a href="#ajuda">Ajuda</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#desconectar">Desconectar</a></li>
+        </ul>
+    </nav>
+    
+</body>
+</html>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: 100vh;
+    background-color: #E0E0E0;
+    font-family: 'Comic Sans MS', sans-serif;
+    overflow-x: hidden; 
+}
+
+.header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffccff; 
+            padding: 15px 30px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            z-index: 1000; 
+            border-bottom: 5px solid #ff66b2;
+        }
+
+        .logo {
+            position: absolute; 
+            left: 20px;
+            width: 200px; 
+            height: auto;
+        }
+
+        .title {
+            color: #ff3399; 
+            font-size: 2.5em; 
+            margin: 0; 
+            text-align: center; 
+            text-shadow: 3px 3px 6px #ff99cc;
+        }
+
+.sidebar {
+    width: 400px;
+    background: linear-gradient(to bottom, #FF69B4, #1E90FF);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #FF69B4;
+    height: auto; 
+    position: relative; 
+    margin: 100Spx auto;
+    margin-top: 120px; 
+    margin-bottom: 30px; 
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px;
+    display: block;
+    background-color: #1E90FF;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #FF69B4;
+}
+
+.sidebar ul li a:hover {
+    background-color: #FF69B4;
+    color: #1E90FF;
+}
+
+</style>
