@@ -4,10 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <style>
+        body {
+            background: #e0b3ff;  
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            color: #000000; 
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #f8c6f8; 
+            color: #ffffff; 
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 200px; 
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .header-title {
+            font-size: 24px;
+            color: #d63da3;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f8ff; 
+            border: 2px solid #0000ff; 
+            border-radius: 15px; 
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff00ff; 
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #000000; 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #000000; 
+        }
+
+        input {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #0000ff; 
+            border-radius: 5px;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            background: #e0e0e0; 
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            background: #ff00ff; 
+            border: 1px solid #0000ff; 
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: #ff66ff; 
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="imagemlogin.png" alt="Logo">
+        </div>
+    </header>
     <div class="container">
-        <h1>You are new here, register here!</h1>
+        <h1>Are you new here? Register here!</h1>
         <form action="#">
             <label for="nome">Name:</label>
             <input type="text" id="nome" name="nome" required>
@@ -18,7 +113,7 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="nova-senha">New Password :</label>
+            <label for="nova-senha">New Password:</label>
             <input type="password" id="nova_senha" name="nova_senha" required>
 
             <label for="confirmar-senha">Confirm Password:</label>
@@ -29,72 +124,3 @@
     </div>
 </body>
 </html>
-
-<style>
-    
-
-body {
-    background: #e0b3ff;  
-    font-family: 'Comic Sans MS', cursive, sans-serif; 
-    color: #000000; 
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 80%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #f0f8ff; 
-    border: 2px solid #0000ff; 
-    border-radius: 15px; 
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
-}
-
-h1 {
-    text-align: center;
-    color: #ff00ff; 
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px #000000; 
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #000000; 
-}
-
-input {
-    margin-top: 5px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #0000ff; 
-    border-radius: 5px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-    background: #e0e0e0; 
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px;
-    font-size: 16px;
-    color: #ffffff;
-    background: #ff00ff; 
-    border: 1px solid #0000ff; 
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-button:hover {
-    background: #ff66ff; 
-}
-
-</style>
