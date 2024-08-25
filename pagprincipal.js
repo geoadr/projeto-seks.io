@@ -1,137 +1,103 @@
+
 document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const fileInput = document.getElementById('upload');
     const captionInput = document.getElementById('caption');
-    const file = fileInput.files[0];
-    const caption = captionInput.value;
 
-    if (file) {
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
         const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.alt = 'Nova Foto';
 
+        reader.onload = function(e) {
+            const img = new Image();
+            img.src = e.target.result;
+
+            const caption = captionInput.value || '';
             const photoItem = document.createElement('div');
             photoItem.className = 'photo-item';
-
-            if (caption) {
-                const captionElement = document.createElement('p');
-                captionElement.className = 'caption';
-                captionElement.textContent = caption;
-                photoItem.appendChild(captionElement);
-            }
-
-            const likeButton = document.createElement('button');
-            likeButton.innerHTML = '👍';
-            likeButton.className = 'like-button';
-            likeButton.addEventListener('click', function() {
-                likeButton.classList.add('selected');
-                dislikeButton.classList.remove('selected');
-            });
-
-            const dislikeButton = document.createElement('button');
-            dislikeButton.innerHTML = '👎';
-            dislikeButton.className = 'dislike-button';
-            dislikeButton.addEventListener('click', function() {
-                dislikeButton.classList.add('selected');
-                likeButton.classList.remove('selected');
-            });
-
-            const deleteButton = document.createElement('button');
-            deleteButton.innerHTML = '🗑️';
-            deleteButton.className = 'delete-button';
-            deleteButton.addEventListener('click', function() {
-                photoItem.remove();
-            });
-
-            photoItem.appendChild(img);
-            photoItem.appendChild(likeButton);
-            photoItem.appendChild(dislikeButton);
-            photoItem.appendChild(deleteButton);
-
+            photoItem.innerHTML = `
+                <img src="${img.src}" alt="${caption}">
+                <p class="caption">${caption}</p>
+                <div class="like-dislike-buttons">
+                    <button class="like-button">👍< <span class="count">0</span></button>
+                    <button class="dislike-button">👎 <span class="count">0</span></button>
+                    <button class="save-button">⬇️</button>
+                    <button class="delete-button">🗑️</button>
+                </div>
+            `;
             document.getElementById('photoGallery').appendChild(photoItem);
-
-            captionInput.value = '';
-            fileInput.value = '';
+            fileInput.value = ''; 
+            captionInput.value = ''; 
         };
         reader.readAsDataURL(file);
     }
 });
 
 document.getElementById('textForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    const textInput = document.getElementById('sharedText');
-    const text = textInput.value;
+    event.preventDefault();
 
-    if (text) {
-        const textItem = document.createElement('div');
-        textItem.className = 'text-item';
-        textItem.textContent = text;
+    const sharedText = document.getElementById('sharedText').value;
+    const textItem = document.createElement('div');
+    textItem.className = 'text-item';
+    textItem.innerHTML = `
+        <p>${sharedText}</p>
+        <div class="like-dislike-buttons">
+            <button class="delete-button">🗑️</button>
+        </div>
+    `;
+    document.getElementById('textGallery').appendChild(textItem);
+    document.getElementById('sharedText').value = ''; 
+});
 
-        const likeButton = document.createElement('button');
-        likeButton.innerHTML = '👍';
-        likeButton.className = 'like-button';
-        likeButton.addEventListener('click', function() {
-            likeButton.classList.add('selected');
-            dislikeButton.classList.remove('selected');
-        });
+document.addEventListener('click', function(event) {
+    const emojiPickerCaption = document.getElementById('emojiPickerCaption');
+    const emojiPickerText = document.getElementById('emojiPickerText');
 
-        const dislikeButton = document.createElement('button');
-        dislikeButton.innerHTML = '👎';
-        dislikeButton.className = 'dislike-button';
-        dislikeButton.addEventListener('click', function() {
-            dislikeButton.classList.add('selected');
-            likeButton.classList.remove('selected');
-        });
+    if (event.target.id === 'emojiBtnCaption') {
+        emojiPickerCaption.style.display = emojiPickerCaption.style.display === 'none' || emojiPickerCaption.style.display === '' ? 'block' : 'none';
+    } else if (event.target.id === 'emojiBtnText') {
+        emojiPickerText.style.display = emojiPickerText.style.display === 'none' || emojiPickerText.style.display === '' ? 'block' : 'none';
+    } else if (emojiPickerCaption && !emojiPickerCaption.contains(event.target)) {
+        emojiPickerCaption.style.display = 'none';
+    } else if (emojiPickerText && !emojiPickerText.contains(event.target)) {
+        emojiPickerText.style.display = 'none';
+    }
 
-        const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = '🗑️';
-        deleteButton.className = 'delete-button';
-        deleteButton.addEventListener('click', function() {
-            textItem.remove();
-        });
+    if (event.target.closest('.emoji-picker button')) {
+        const emoji = event.target.innerText;
+        const inputField = event.target.closest('.emoji-container').querySelector('input, textarea');
+        inputField.value += emoji;
+    }
 
-        textItem.appendChild(likeButton);
-        textItem.appendChild(dislikeButton);
-        textItem.appendChild(deleteButton);
+    if (event.target.classList.contains('delete-button')) {
+        event.target.closest('.photo-item, .text-item').remove();
+    }
 
-        document.getElementById('textGallery').appendChild(textItem);
+    if (event.target.classList.contains('like-button')) {
+        const likeButton = event.target;
+        const countSpan = likeButton.querySelector('.count');
+        let count = parseInt(countSpan.innerText) || 0;
+        countSpan.innerText = ++count;
+        likeButton.classList.add('liked');
+        likeButton.classList.remove('disliked');
+    } else if (event.target.classList.contains('dislike-button')) {
+        const dislikeButton = event.target;
+        const countSpan = dislikeButton.querySelector('.count');
+        let count = parseInt(countSpan.innerText) || 0;
+        countSpan.innerText = ++count;
+        dislikeButton.classList.add('disliked');
+        dislikeButton.classList.remove('liked');
+    }
 
-        textInput.value = '';
+    if (event.target.classList.contains('save-button')) {
+        const img = event.target.closest('.photo-item').querySelector('img');
+        const link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'foto.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 });
 
-const emojis = ['😀', '😂', '😍', '🥺', '😎', '😢', '👍', '🙏', '💪', '🎉', '❤️'];
-
-function createEmojiPicker(button, inputField) {
-    const picker = document.createElement('div');
-    picker.className = 'emoji-picker';
-
-    emojis.forEach(emoji => {
-        const emojiButton = document.createElement('button');
-        emojiButton.textContent = emoji;
-        emojiButton.addEventListener('click', () => {
-            inputField.value += emoji;
-            picker.style.display = 'none';
-        });
-        picker.appendChild(emojiButton);
-    });
-
-    button.parentNode.appendChild(picker);
-
-    button.addEventListener('click', () => {
-        picker.style.display = picker.style.display === 'none' || picker.style.display === '' ? 'flex' : 'none';
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const captionInput = document.getElementById('caption');
-    const emojiBtnCaption = document.getElementById('emojiBtnCaption');
-    createEmojiPicker(emojiBtnCaption, captionInput);
-
-    const sharedTextInput = document.getElementById('sharedText');
-    const emojiBtnText = document.getElementById('emojiBtnText');
-    createEmojiPicker(emojiBtnText, sharedTextInput);
-});
