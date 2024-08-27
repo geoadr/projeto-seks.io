@@ -6,7 +6,7 @@
     <title>Selecione o Idioma</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Comic Sans MS', sans-serif; /* Alterado para Comic Sans MS */
             background: linear-gradient(to right, #ff00cc, #3333ff);
             color: #fff;
             margin: 0;
