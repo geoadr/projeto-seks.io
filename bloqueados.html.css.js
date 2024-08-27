@@ -75,7 +75,7 @@
 
         main {
             flex: 1;
-            margin-left: 340px; /* Ajusta o espaço para a sidebar */
+            margin-left: 340px; 
             padding: 20px;
         }
 
@@ -277,13 +277,13 @@
             <button onclick="closeModal()">Não</button>
         </div>
     </div>
-    <footer>
-        <a href="#">Lenguage</a>
+    <div class="footer">
+        <a href="idioma.html">Lenguage</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Need Help?</a>
+        <a href="ajuda.html">Need Help?</a>
         <a href="pagprincipal.html">Main Screen</a>
-        <a href="#">New account</a>
-    </footer>
+        <a href="login.html">New account</a>
+    </div>
     <script>
         function confirmUnblock(profileId) {
             window.selectedProfileId = profileId;
