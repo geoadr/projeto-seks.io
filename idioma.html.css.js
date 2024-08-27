@@ -6,7 +6,7 @@
     <title>Selecione o Idioma</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', sans-serif; /* Alterado para Comic Sans MS */
+            font-family: 'Comic Sans MS', sans-serif;
             background: linear-gradient(to right, #ff00cc, #3333ff);
             color: #fff;
             margin: 0;
@@ -15,27 +15,27 @@
         .container {
             background: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
-            padding: 50px; /* Aumentado para mais espaço ao redor */
+            padding: 50px;
             display: inline-block;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             text-align: center;
             margin-top: 30px;
         }
         h1 {
-            font-size: 2.5em; /* Aumentado para destacar o título */
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
         select {
-            padding: 15px; /* Aumentado para mais espaço interno */
-            font-size: 1.2em; /* Aumentado para um texto maior */
-            border-radius: 15px; /* Aumentado para bordas mais arredondadas */
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 15px;
             border: none;
             outline: none;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             background: #fff;
             color: #000;
-            width: 100%; /* Faz com que o select ocupe toda a largura disponível */
-            max-width: 300px; /* Define uma largura máxima para o select */
+            width: 100%;
+            max-width: 300px;
         }
         option {
             color: #000;
@@ -177,6 +177,13 @@
                             "help": "Help",
                             "changePassword": "Change Password",
                             "logout": "Logout"
+                        },
+                        "footer": {
+                            "language": "Language",
+                            "privacyPolicy": "Privacy Policy",
+                            "needHelp": "Need Help?",
+                            "mainScreen": "Main Screen",
+                            "newAccount": "New Account"
                         }
                     }
                 },
@@ -192,6 +199,13 @@
                             "help": "Ayuda",
                             "changePassword": "Cambiar Contraseña",
                             "logout": "Salir"
+                        },
+                        "footer": {
+                            "language": "Idioma",
+                            "privacyPolicy": "Política de Privacidad",
+                            "needHelp": "¿Necesitas Ayuda?",
+                            "mainScreen": "Pantalla Principal",
+                            "newAccount": "Nueva Cuenta"
                         }
                     }
                 },
@@ -207,6 +221,13 @@
                             "help": "Aide",
                             "changePassword": "Changer le Mot de Passe",
                             "logout": "Se Déconnecter"
+                        },
+                        "footer": {
+                            "language": "Langue",
+                            "privacyPolicy": "Politique de Confidentialité",
+                            "needHelp": "Besoin d'Aide?",
+                            "mainScreen": "Écran Principal",
+                            "newAccount": "Nouveau Compte"
                         }
                     }
                 },
@@ -222,6 +243,13 @@
                             "help": "Hilfe",
                             "changePassword": "Passwort Ändern",
                             "logout": "Abmelden"
+                        },
+                        "footer": {
+                            "language": "Sprache",
+                            "privacyPolicy": "Datenschutzrichtlinie",
+                            "needHelp": "Brauchen Sie Hilfe?",
+                            "mainScreen": "Hauptbildschirm",
+                            "newAccount": "Neues Konto"
                         }
                     }
                 },
@@ -237,6 +265,13 @@
                             "help": "Ajuda",
                             "changePassword": "Alterar Senha",
                             "logout": "Sair"
+                        },
+                        "footer": {
+                            "language": "Idioma",
+                            "privacyPolicy": "Política de Privacidade",
+                            "needHelp": "Precisa de Ajuda?",
+                            "mainScreen": "Tela Principal",
+                            "newAccount": "Nova Conta"
                         }
                     }
                 },
@@ -252,6 +287,13 @@
                             "help": "Aiuto",
                             "changePassword": "Cambia Password",
                             "logout": "Esci"
+                        },
+                        "footer": {
+                            "language": "Lingua",
+                            "privacyPolicy": "Informativa sulla Privacy",
+                            "needHelp": "Hai Bisogno di Aiuto?",
+                            "mainScreen": "Schermata Principale",
+                            "newAccount": "Nuovo Account"
                         }
                     }
                 },
@@ -267,6 +309,13 @@
                             "help": "ヘルプ",
                             "changePassword": "パスワード変更",
                             "logout": "ログアウト"
+                        },
+                        "footer": {
+                            "language": "言語",
+                            "privacyPolicy": "プライバシーポリシー",
+                            "needHelp": "助けが必要ですか？",
+                            "mainScreen": "メイン画面",
+                            "newAccount": "新しいアカウント"
                         }
                     }
                 },
@@ -282,6 +331,13 @@
                             "help": "도움말",
                             "changePassword": "비밀번호 변경",
                             "logout": "로그아웃"
+                        },
+                        "footer": {
+                            "language": "언어",
+                            "privacyPolicy": "개인정보 처리방침",
+                            "needHelp": "도움이 필요하신가요?",
+                            "mainScreen": "메인 화면",
+                            "newAccount": "새 계정"
                         }
                     }
                 },
@@ -297,6 +353,13 @@
                             "help": "帮助",
                             "changePassword": "更改密码",
                             "logout": "登出"
+                        },
+                        "footer": {
+                            "language": "语言",
+                            "privacyPolicy": "隐私政策",
+                            "needHelp": "需要帮助吗？",
+                            "mainScreen": "主屏幕",
+                            "newAccount": "新账户"
                         }
                     }
                 },
@@ -312,6 +375,13 @@
                             "help": "المساعدة",
                             "changePassword": "تغيير كلمة المرور",
                             "logout": "تسجيل الخروج"
+                        },
+                        "footer": {
+                            "language": "اللغة",
+                            "privacyPolicy": "سياسة الخصوصية",
+                            "needHelp": "تحتاج مساعدة؟",
+                            "mainScreen": "الشاشة الرئيسية",
+                            "newAccount": "حساب جديد"
                         }
                     }
                 },
@@ -327,6 +397,13 @@
                             "help": "Помощь",
                             "changePassword": "Изменить Пароль",
                             "logout": "Выйти"
+                        },
+                        "footer": {
+                            "language": "Язык",
+                            "privacyPolicy": "Политика конфиденциальности",
+                            "needHelp": "Нужна помощь?",
+                            "mainScreen": "Главный экран",
+                            "newAccount": "Новая учетная запись"
                         }
                     }
                 }
@@ -349,11 +426,11 @@
     </script>
 
     <div class="footer">
-        <a href="#">Language</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Need Help?</a>
-        <a href="pagprincipal.html">Main Screen</a>
-        <a href="#">New account</a>
+        <a href="#" data-i18n="footer.language">Language</a>
+        <a href="#" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.needHelp">Need Help?</a>
+        <a href="pagprincipal.html" data-i18n="footer.mainScreen">Main Screen</a>
+        <a href="#" data-i18n="footer.newAccount">New account</a>
     </div>
 </body>
 </html>
