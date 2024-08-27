@@ -426,11 +426,11 @@
     </script>
 
     <div class="footer">
-        <a href="#" data-i18n="footer.language">Language</a>
+        <a href="idioma.html" data-i18n="footer.language">Language</a>
         <a href="#" data-i18n="footer.privacyPolicy">Privacy Policy</a>
-        <a href="#" data-i18n="footer.needHelp">Need Help?</a>
+        <a href="ajuda.html" data-i18n="footer.needHelp">Need Help?</a>
         <a href="pagprincipal.html" data-i18n="footer.mainScreen">Main Screen</a>
-        <a href="#" data-i18n="footer.newAccount">New account</a>
+        <a href="login.html" data-i18n="footer.newAccount">New account</a>
     </div>
 </body>
 </html>
