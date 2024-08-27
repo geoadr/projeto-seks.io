@@ -51,11 +51,11 @@
     </div>
     <script src="chat.js"></script>
     <div class="footer">
-        <a href="#">Lenguage</a>
+        <a href="idioma.html">Lenguage</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Need Help?</a>
+        <a href="ajuda.html">Need Help?</a>
         <a href="pagprincipal.html">Main Screen</a>
-        <a href="#">New account</a>
+        <a href="login.html">New account</a>
     </div>
 </body>
 </html>
