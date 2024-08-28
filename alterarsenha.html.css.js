@@ -266,7 +266,7 @@
                             <input type="password" id="confirmar-senha" name="confirmar-senha" required>
                         </div>
                         <button type="submit">Alterar Senha</button>
-                        <a href="esqueceu-senha.html" class="forgot-password">Esqueceu a Senha?</a>
+                        <a href="esqueceusenha.html" class="forgot-password">Esqueceu a Senha?</a>
                         <div class="notification">Senha alterada com sucesso!</div>
                         <div class="error-message">Senha incorreta. Por favor, verifique e tente novamente.</div>
                     </form>
