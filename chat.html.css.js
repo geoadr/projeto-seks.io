@@ -34,7 +34,11 @@
             </div>
             <div class="input-area">
                 <input type="text" id="messageInput" placeholder="Selecione um amigo para começar a conversar..." disabled>
-                <button onclick="sendMessage()" disabled>Enviar</button>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="sendPhoto()">
+                <button onclick="sendMessage()" disabled>
+                    <span id="loadingIcon" style="display: none;">🔄</span> Enviar
+                </button>
+                <button onclick="toggleFileInput()">📎</button>
                 <button onclick="toggleEmojiPanel()">😊</button>
                 <div class="emoji-panel" id="emojiPanel">
                     <span onclick="insertEmoji('😊')">😊</span>
@@ -57,16 +61,24 @@
         <a href="pagprincipal.html">Main Screen</a>
         <a href="login.html">New account</a>
     </div>
+    <button onclick="toggleTheme()" class="theme-toggle-btn">🌙</button>
 </body>
 </html>
+
 <style>
     body {
         font-family: 'Comic Sans MS', cursive, sans-serif;
-        background: #ffccff; /* Rosa bebê */
+        background: #ffccff; 
         margin: 0;
         padding: 0;
+        transition: background 0.3s, color 0.3s;
     }
     
+    body.dark-mode {
+        background: #2e2e2e;
+        color: #e0e0e0;
+    }
+
     .container {
         max-width: 800px;
         margin: 20px auto;
@@ -74,6 +86,11 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         padding: 20px;
+        transition: background 0.3s;
+    }
+    
+    body.dark-mode .container {
+        background: #3a3a3a;
     }
     
     .chat-header {
@@ -92,6 +109,11 @@
         border-radius: 10px;
         padding: 10px;
         margin-bottom: 20px;
+        transition: background 0.3s;
+    }
+    
+    body.dark-mode .friends-list {
+        background: #4b4b4b;
     }
     
     .friends-list h2 {
@@ -108,6 +130,10 @@
         margin-bottom: 10px;
         cursor: pointer;
         transition: background 0.3s;
+    }
+    
+    body.dark-mode .friend {
+        background: #5a5a5a;
     }
     
     .friend:hover {
@@ -129,6 +155,12 @@
         border-radius: 10px;
         padding: 10px;
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transition: background 0.3s;
+    }
+    
+    body.dark-mode .chat-box {
+        background: #4b4b4b;
     }
     
     .messages {
@@ -138,6 +170,21 @@
         border-radius: 10px;
         padding: 10px;
         background: #fff;
+        color: #333;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode .messages {
+        background: #666;
+        color: #ddd;
+    }
+
+    .messages div {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 8px;
+        margin: 5px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .input-area {
@@ -153,6 +200,13 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 16px;
+        margin-right: 10px;
+        transition: border-color 0.3s;
+    }
+    
+    #messageInput:focus {
+        border-color: #ff3366;
+        outline: none;
     }
     
     button {
@@ -164,30 +218,34 @@
         margin-left: 5px;
         cursor: pointer;
         font-size: 16px;
+        transition: background 0.3s, transform 0.2s;
     }
     
     button:hover {
         background: #cc0052;
     }
     
+    button:active {
+        transform: scale(0.98);
+    }
+
     .emoji-panel {
         display: none;
         position: absolute;
         bottom: 50px;
         left: 0;
         background: #fff;
-        border: 1px solid #ccc;
+        border: 2px solid #ff3366;
         border-radius: 5px;
-        padding: 10px;
+        padding: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         z-index: 100;
     }
     
     .emoji-panel span {
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
-        margin: 5px;
-        display: inline-block;
+        margin: 3px;
     }
     
     .emoji-panel span:hover {
@@ -258,4 +316,122 @@
         margin-top: 10px;
         display: none;
     }
+
+    .theme-toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff3366;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle-btn:hover {
+        background: #cc0052;
+    }
+
+    .theme-toggle-btn:active {
+        transform: scale(0.98);
+    }
 </style>
+
+<script>
+    const messageHistories = {
+        'Ana': [],
+        'Carlos': [],
+        'Julia': []
+    };
+
+    let selectedFriend = '';
+
+    function selectFriend(friendName) {
+        selectedFriend = friendName;
+        document.getElementById('messageInput').disabled = false;
+        document.getElementById('fileInput').disabled = false;
+        document.querySelector('button[onclick="sendMessage()"]').disabled = false;
+        document.getElementById('messageInput').placeholder = `Digite sua mensagem para ${friendName}...`;
+        displayMessages();
+    }
+
+    function displayMessages() {
+        const messagesDiv = document.getElementById('messages');
+        if (selectedFriend) {
+            messagesDiv.innerHTML = `<div>Conectado com ${selectedFriend}</div>` + 
+                messageHistories[selectedFriend].map(msg => {
+                    if (msg.startsWith('[Foto]')) {
+                        return `<img src="${msg.slice(6)}" alt="Imagem enviada">`;
+                    }
+                    return `<div>${msg}</div>`;
+                }).join('');
+        }
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function sendMessage() {
+        if (!selectedFriend) return;
+
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+
+        if (message) {
+            const formattedMessage = `[Para ${selectedFriend}]: ${message}`;
+            messageHistories[selectedFriend].push(formattedMessage);
+            input.value = '';
+            input.focus();
+            displayMessages();
+
+            document.getElementById('loadingIcon').style.display = 'inline';
+            document.querySelector('button[onclick="sendMessage()"]').disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('loadingIcon').style.display = 'none';
+                document.querySelector('button[onclick="sendMessage()"]').disabled = false;
+            }, 500);
+        }
+    }
+
+    function sendPhoto() {
+        if (!selectedFriend) return;
+
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const photoURL = e.target.result;
+                const formattedMessage = `[Foto]${photoURL}`;
+                messageHistories[selectedFriend].push(formattedMessage);
+                fileInput.value = ''; 
+                displayMessages();
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function toggleEmojiPanel() {
+        const panel = document.getElementById('emojiPanel');
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function insertEmoji(emoji) {
+        const input = document.getElementById('messageInput');
+        input.value += emoji;
+        input.focus();
+        toggleEmojiPanel();  
+    }
+
+    function toggleFileInput() {
+        document.getElementById('fileInput').click();
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+    }
+</script>
