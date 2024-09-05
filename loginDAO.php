@@ -1,21 +1,24 @@
 <?php
 
 class LoginDAO {
+    public $nome;
+    public $usuario;
     public $email;
     public $senha;
 
     public function cadastrar() {
         $objeto = new Conexao();
-        $SQL = "INSERT INTO email (numero, senha, local)
-                VALUES ($this->numero, '$this->senha', '$this->local');";
+        $SQL = "INSERT INTO Login (email, senha, nome, usuario)
+                VALUES ('$this->email', '$this->senha', '$this->nome', '$this->usuario');";
         $objeto->set("sql", $SQL);
+        //echo $SQL;
         $objeto->query();
         return "Cadastrado com Sucesso";
     }
     
     public function alterar() {
         $objeto = new Conexao();
-        $SQL = "UPDATE login SET senha='$this->senha', local='$this->local'"
+        $SQL = "UPDATE Login SET senha='$this->senha' "
                 . "WHERE numero='$this->numero';";
         $objeto->set("sql", $SQL);
         $objeto->query();
@@ -24,7 +27,7 @@ class LoginDAO {
     
     public function excluir() {
         $objeto = new Conexao();
-        $SQL = "DELETE FROM login WHERE numero = $this->numero;";
+        $SQL = "DELETE FROM Login WHERE numero = $this->numero;";
         $objeto->set("sql", $SQL);
         $objeto->query();
         return "Excluido com Sucesso";
@@ -36,9 +39,8 @@ class LoginDAO {
     
     public function trazerDados(){
         $objeto = new Conexao();
-        $SQL = "SELECT numero, senha, local"
-                . "FROM login"
-                . "WHERE local LIKE '%$this->local%'";
+        $SQL = "SELECT email, senha "
+                . "FROM login";
         $objeto->set("sql", $SQL);
         return $objeto->query();
     }
