@@ -1,37 +1,47 @@
 <?php
 
 class Login {
+    public $nome;
+    public $usuario;
     public $email;
     public $senha;
-
 
     public function cadastrar() {
         $objeto = new LoginDAO();
         $objeto->set("email", $this->email);
         $objeto->set("senha", $this->senha);
+        $objeto->set("usuario", $this->usuario);
+        $objeto->set("nome", $this->nome);
         
         return $objeto->cadastrar();
         
     }
     public function alterar() {
-        $objeto = new SalaDAO();
+        $objeto = new LoginDAO();
         $objeto->set("email", $this->email);
         $objeto->set("senha", $this->senha);
+        $objeto->set("usuario", $this->usuario);
+        $objeto->set("nome", $this->nome);
 
         
         return $objeto->alterar();
     }
 
     public function excluir() {
-        $objeto = new SalaDAO();
-        $objeto->set("email", $this->email);        
+        $objeto = new LoginDAO();
+        $objeto->set("email", $this->email);
+        $objeto->set("senha", $this->senha);
+        $objeto->set("usuario", $this->usuario);
+        $objeto->set("nome", $this->nome);
         return $objeto->excluir();
     }
     
     public function trazerDados() {
-        $objeto = new SalaDAO();
+        $objeto = new LoginDAO();
         $objeto->set("email", $this->email);
         $objeto->set("senha", $this->senha);
+        $objeto->set("usuario", $this->usuario);
+        $objeto->set("nome", $this->nome);
         
         return $objeto->trazerDados();
     }
@@ -45,7 +55,9 @@ class Login {
         $objeto = new LoginDAO();
         $objeto->set("email", $this->email);
         $objeto->set("senha", $this->senha);
-
+        $objeto->set("usuario", $this->usuario);
+        $objeto->set("nome", $this->nome);
+        
         $row = $objeto->Logar() ->fetch_assoc();
         if(empty($row)){
             return "nada";
@@ -57,3 +69,4 @@ class Login {
     }
 
 }
+?>
