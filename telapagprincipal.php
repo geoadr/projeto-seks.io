@@ -1,26 +1,26 @@
-<?php
-include "Login.php";
-include "LoginDAO.php";
+<?PHP
+include "pagprincipal.php";
 include "Conexao.php";
+include "pagprincipalDAO.php";
 
 $msg = "";
 
 if (!empty($_POST)){
     $objeto = new Login();
-    $objeto->set("nome", $_POST["nome"]);
-    $objeto->set("usuario", $_POST["usuario"]);
-    $objeto->set("email", $_POST["email"]);
-    $objeto->set("senha", $_POST["senha"]);
+    $objeto->set("pensamento", $_POST["pensamento"]);
+    $objeto->set("sentimento", $_POST["sentimento"]);
+    $objeto->set("reacao", $_POST["reacao"]);
  
-      //Percorre a Variável Global $_POST
+    
+    //Percorre a Variável Global $_POST
     foreach($_POST as $chave=>$botao) {
         
-        if($botao == "Cadastrar"){
-            $msg = $objeto->cadastrar();        
-        }         
+        if($botao == "Entrar"){
+            $msg = $objeto->postar(); 
+            $_SESSION["PostagemFeita"]=$msg;       
+        } 
     }    
 } 
-
 ?>
 
 
@@ -42,8 +42,8 @@ if (!empty($_POST)){
       
         <aside class="sidebar">
             <ul>
-                <li><a href="login.html">Início</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="telapagprincipal.php">Início</a></li>
+                <li><a href="telaPerfil.php">Perfil</a></li>
                 <li><a href="chat.html">Mensagens</a></li>
                 <li><a href="sugestoes.html">Amigos</a></li>
                 <li><a href="configuracoes.html">Configurações</a></li>
@@ -55,9 +55,8 @@ if (!empty($_POST)){
             <h1>Bem-vindo ao SEKS.IO</h1>
 
             <section class="photo-upload">
-                <h2>Postar Foto</h2>
-                <form id="uploadForm">
-                    <input type="file" id="upload" name="upload" accept="image/*" required>
+                <h2>Como você está se sentindo?</h2>
+                <form id="pagprincipalPO" method="POST" action="">
                     <div class="emoji-container">
                         <input type="text" id="caption" name="caption" placeholder="Adicione uma legenda com emojis" maxlength="100">
                         <button type="button" id="emojiBtnCaption">😀</button>
@@ -148,7 +147,7 @@ if (!empty($_POST)){
                             <button type="button">👌</button>
                         </div>
                     </div>
-                    <button type="submit">Compartilhar</button>
+                    <button type="submit" value="Entrar" id="botao"  name="botao"></button>
                 </form>
                 <div class="texts" id="textGallery">
                     
