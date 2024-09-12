@@ -1,23 +1,25 @@
 <?PHP
-include "pagprincipal.php";
+include "Postagem.php";
 include "Conexao.php";
-include "pagprincipalDAO.php";
+include "PostagemDAO.php";
 
 $msg = "";
 
 if (!empty($_POST)){
-    $objeto = new Login();
-    $objeto->set("pensamento", $_POST["pensamento"]);
-    $objeto->set("sentimento", $_POST["sentimento"]);
-    $objeto->set("reacao", $_POST["reacao"]);
+    $objeto = new Postagem();
+    $objeto->set("figura_nome", $_FILES["upload"]);
+    $objeto->set("id_perfil",1);
+
  
     
     //Percorre a Variável Global $_POST
     foreach($_POST as $chave=>$botao) {
         
-        if($botao == "Entrar"){
-            $msg = $objeto->postar(); 
-            $_SESSION["PostagemFeita"]=$msg;       
+        if($botao == "Postar"){
+            echo "SAIU TBM";
+            $objeto->cadastrar_figura();
+            echo "SAIU";
+            $msg = $objeto->gravarimagem();
         } 
     }    
 } 
@@ -37,135 +39,135 @@ if (!empty($_POST)){
 
 
 
-
-    <div class="container">
+<div class="container">
       
-        <aside class="sidebar">
-            <ul>
-                <li><a href="telapagprincipal.php">Início</a></li>
-                <li><a href="telaPerfil.php">Perfil</a></li>
-                <li><a href="chat.html">Mensagens</a></li>
-                <li><a href="sugestoes.html">Amigos</a></li>
-                <li><a href="configuracoes.html">Configurações</a></li>
-                <li><a href="sobrenos.html">Sobre nós</a></li>
-            </ul>
-        </aside>
+      <aside class="sidebar">
+          <ul>
+              <li><a href="pagprincipal.php">Início</a></li>
+              <li><a href="telaPerfil.php">Perfil</a></li>
+              <li><a href="chat.html">Mensagens</a></li>
+              <li><a href="sugestoes.html">Amigos</a></li>
+              <li><a href="configuracoes.html">Configurações</a></li>
+              <li><a href="sobrenos.html">Sobre nós</a></li>
 
-        <main class="main-content">
-            <h1>Bem-vindo ao SEKS.IO</h1>
+          </ul>
+      </aside>
 
-            <section class="photo-upload">
-                <h2>Como você está se sentindo?</h2>
-                <form id="pagprincipalPO" method="POST" action="">
-                    <div class="emoji-container">
-                        <input type="text" id="caption" name="caption" placeholder="Adicione uma legenda com emojis" maxlength="100">
-                        <button type="button" id="emojiBtnCaption">😀</button>
-                        <div class="emoji-picker" id="emojiPickerCaption">
-                            <button type="button">😊</button>
-                            <button type="button">😂</button>
-                            <button type="button">😍</button>
-                            <button type="button">🤔</button>
-                            <button type="button">😎</button>
-                            <button type="button">🥳</button>
-                            <button type="button">🤩</button>
-                            <button type="button">😢</button>
-                            <button type="button">😡</button>
-                            <button type="button">🥺</button>
-                            <button type="button">🤯</button>
-                            <button type="button">😴</button>
-                            <button type="button">😱</button>
-                            <button type="button">🧐</button>
-                            <button type="button">🤠</button>
-                            <button type="button">🤤</button>
-                            <button type="button">🤑</button>
-                            <button type="button">🤗</button>
-                            <button type="button">😷</button>
-                            <button type="button">😺</button>
-                            <button type="button">👻</button>
-                            <button type="button">💩</button>
-                            <button type="button">👀</button>
-                            <button type="button">👐</button>
-                            <button type="button">✌️</button>
-                            <button type="button">👏</button>
-                            <button type="button">🤲</button>
-                            <button type="button">🙌</button>
-                            <button type="button">🙏</button>
-                            <button type="button">🤝</button>
-                            <button type="button">💪</button>
-                            <button type="button">👊</button>
-                            <button type="button">👌</button>
-                        </div>
-                    </div>
-                    <button type="submit">Postar</button>
-                </form>
-            </section>
+      <main class="main-content">
+          <h1>Bem-vindo ao SEKS.IO</h1>
 
-            <div class="photo-gallery" id="photoGallery">
+          <section class="photo-upload">
+              <h2>Postar Foto</h2>
+              <form id="uploadForm" method="post" enctype="multipart/form-data">
+                  <input type="file" id="upload" name="upload" accept="image/*" required>
+                  <div class="emoji-container">
+                      <input type="text" id="caption" name="caption" placeholder="Adicione uma legenda com emojis" maxlength="100">
+                      <button type="button" id="emojiBtnCaption">😀</button>
+                      <div class="emoji-picker" id="emojiPickerCaption">
+                          <button type="button">😊</button>
+                          <button type="button">😂</button>
+                          <button type="button">😍</button>
+                          <button type="button">🤔</button>
+                          <button type="button">😎</button>
+                          <button type="button">🥳</button>
+                          <button type="button">🤩</button>
+                          <button type="button">😢</button>
+                          <button type="button">😡</button>
+                          <button type="button">🥺</button>
+                          <button type="button">🤯</button>
+                          <button type="button">😴</button>
+                          <button type="button">😱</button>
+                          <button type="button">🧐</button>
+                          <button type="button">🤠</button>
+                          <button type="button">🤤</button>
+                          <button type="button">🤑</button>
+                          <button type="button">🤗</button>
+                          <button type="button">😷</button>
+                          <button type="button">😺</button>
+                          <button type="button">👻</button>
+                          <button type="button">💩</button>
+                          <button type="button">👀</button>
+                          <button type="button">👐</button>
+                          <button type="button">✌️</button>
+                          <button type="button">👏</button>
+                          <button type="button">🤲</button>
+                          <button type="button">🙌</button>
+                          <button type="button">🙏</button>
+                          <button type="button">🤝</button>
+                          <button type="button">💪</button>
+                          <button type="button">👊</button>
+                          <button type="button">👌</button>
+                      </div>
+                  </div>
+                  <button type="submit" value="Postar" >Postar</button>
+              </form>
+          </section>
+
+          <div class="photo-gallery" id="photoGallery">
+       
+          </div>
+          
          
-            </div>
-            
-           
-            <section class="text-share">
-                <h2>Compartilhar pensamentos</h2>
-                <form id="textForm">
-                    <div class="emoji-container">
-                        <textarea id="sharedText" name="sharedText" rows="4" placeholder="Compartilhe seus pensamentos..."></textarea>
-                        <button type="button" id="emojiBtnText">😀</button>
-                        <div class="emoji-picker" id="emojiPickerText">
-                            <button type="button">😊</button>
-                            <button type="button">😂</button>
-                            <button type="button">😍</button>
-                            <button type="button">🤔</button>
-                            <button type="button">😎</button>
-                            <button type="button">🥳</button>
-                            <button type="button">🤩</button>
-                            <button type="button">😢</button>
-                            <button type="button">😡</button>
-                            <button type="button">🥺</button>
-                            <button type="button">🤯</button>
-                            <button type="button">😴</button>
-                            <button type="button">😱</button>
-                            <button type="button">🧐</button>
-                            <button type="button">🤠</button>
-                            <button type="button">🤤</button>
-                            <button type="button">🤑</button>
-                            <button type="button">🤗</button>
-                            <button type="button">😷</button>
-                            <button type="button">😺</button>
-                            <button type="button">👻</button>
-                            <button type="button">💩</button>
-                            <button type="button">👀</button>
-                            <button type="button">👐</button>
-                            <button type="button">✌️</button>
-                            <button type="button">👏</button>
-                            <button type="button">🤲</button>
-                            <button type="button">🙌</button>
-                            <button type="button">🙏</button>
-                            <button type="button">🤝</button>
-                            <button type="button">💪</button>
-                            <button type="button">👊</button>
-                            <button type="button">👌</button>
-                        </div>
-                    </div>
-                    <button type="submit" value="Entrar" id="botao"  name="botao"></button>
-                </form>
-                <div class="texts" id="textGallery">
-                    
-                </div>
-            </section>
-        </main>
-    </div>
-    <div class="footer">
-        <a href="#">Lenguage</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Need Help?</a>
-        <a href="pagprincipal.html">Main Screen</a>
-        <a href="#">New account</a>
-    </div>
-
-    <script src="pagpricipal.js"></script>
+          <section class="text-share">
+              <h2>Compartilhar pensamentos</h2>
+              <form id="textForm">
+                  <div class="emoji-container">
+                      <textarea id="sharedText" name="sharedText" rows="4" placeholder="Compartilhe seus pensamentos..."></textarea>
+                      <button type="button" id="emojiBtnText">😀</button>
+                      <div class="emoji-picker" id="emojiPickerText">
+                          <button type="button">😊</button>
+                          <button type="button">😂</button>
+                          <button type="button">😍</button>
+                          <button type="button">🤔</button>
+                          <button type="button">😎</button>
+                          <button type="button">🥳</button>
+                          <button type="button">🤩</button>
+                          <button type="button">😢</button>
+                          <button type="button">😡</button>
+                          <button type="button">🥺</button>
+                          <button type="button">🤯</button>
+                          <button type="button">😴</button>
+                          <button type="button">😱</button>
+                          <button type="button">🧐</button>
+                          <button type="button">🤠</button>
+                          <button type="button">🤤</button>
+                          <button type="button">🤑</button>
+                          <button type="button">🤗</button>
+                          <button type="button">😷</button>
+                          <button type="button">😺</button>
+                          <button type="button">👻</button>
+                          <button type="button">💩</button>
+                          <button type="button">👀</button>
+                          <button type="button">👐</button>
+                          <button type="button">✌️</button>
+                          <button type="button">👏</button>
+                          <button type="button">🤲</button>
+                          <button type="button">🙌</button>
+                          <button type="button">🙏</button>
+                          <button type="button">🤝</button>
+                          <button type="button">💪</button>
+                          <button type="button">👊</button>
+                          <button type="button">👌</button>
+                      </div>
+                  </div>
+                  <button type="submit" Value="pensamento" id="Entrar" name="Entrar">Compartilhar</button>
+              </form>
+              <div class="texts" id="textGallery">
+                  
+              </div>
+          </section>
+      </main>
+  </div>
+  <div class="footer">
+      <a href="#">Lenguage</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Need Help?</a>
+      <a href="pagprincipal.html">Main Screen</a>
+      <a href="TelaCadastro.php">New account</a>
+  </div>
+  <script src="pagpricipal.js"></script>
     <script>
-        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        /*document.getElementById('uploadForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const fileInput = document.getElementById('upload');
@@ -265,7 +267,26 @@ if (!empty($_POST)){
                 link.click();
                 document.body.removeChild(link);
             }
-        });
+        });*/
     </script>
+
+<?php
+        $count = 0;
+        $objeto2 = new Postagem();
+       
+        if ($objeto2->consultar() != null) {
+           
+            foreach ($objeto2->consultar() as $valor) {
+                echo ('<div>');
+                 echo ("<img src='fotos_". $valor['id_perfil'] . "/". $valor['figura_nome'] ."'>");
+                 echo ('<div class="like-dislike-buttons">');
+                 echo ('<button class="save-button">⬇️</button>');
+                 echo ('<button class="delete-button" value="Excluir">🗑️</button>');
+                 echo ('</div>');
+            }
+        }
+
+        ?>
+
 </body>
 </html>
