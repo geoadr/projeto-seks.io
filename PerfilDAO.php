@@ -47,6 +47,7 @@ class PerfilDAO {
                 . "FROM Perfil "
                 . "WHERE cidade = '$this->cidade' and pais = '$this->pais'" ;
         $objeto->set("sql", $SQL);
+        
         return $objeto->query();
     }
 }
