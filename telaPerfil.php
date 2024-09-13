@@ -19,7 +19,7 @@ if (!empty($_POST)){
     foreach($_POST as $chave=>$botao) {
         
         if($botao == "Salvar"){
-            $msg = $objeto->salvardados();        
+            $msg = $objeto->cadastrar();        
         }         
     }    
 } 
@@ -82,10 +82,7 @@ if (!empty($_POST)){
                 </div>
             </div>
         </div>
-        <div class="photo-upload">
-            <input type="file" id="file-input" accept="image/*">
-            <button type="button" onclick="changePhoto()">Alterar Foto</button>
-        </div>
+
         <div class="additional-info">
             <div class="info-notice">Somente amigos podem ver as informações abaixo:</div>
             <div class="form-group">
