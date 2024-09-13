@@ -8,6 +8,7 @@ class Perfil {
     public $aniversario;
     public $sexo;
     public $telefone;
+    public $id_perfil;
 
     public function cadastrar() {
         $objeto = new PerfilDAO();
@@ -18,6 +19,7 @@ class Perfil {
         $objeto->set("aniversario", $_POST["aniversario"]);
         $objeto->set("sexo", $_POST["sexo"]);
         $objeto->set("telefone", $_POST["telefone"]);
+        //$objeto->set("id_perfil", $_POST["id_perfil"]);
         return $objeto->cadastrar();
         
     }
@@ -30,7 +32,7 @@ class Perfil {
         $objeto->set("aniversario", $_POST["aniversario"]);
         $objeto->set("sexo", $_POST["sexo"]);
         $objeto->set("telefone", $_POST["telefone"]);
-
+        
         
         return $objeto->alterar();
     }
@@ -45,6 +47,7 @@ class Perfil {
         $objeto->set("aniversario", $_POST["aniversario"]);
         $objeto->set("sexo", $_POST["sexo"]);
         $objeto->set("telefone", $_POST["telefone"]);
+        $objeto->set("id_perfil", $_POST["id_perfil"]);
         
         return $objeto->trazerDados();
     }
@@ -63,8 +66,10 @@ class Perfil {
         $objeto->set("aniversario", $_POST["aniversario"]);
         $objeto->set("sexo", $_POST["sexo"]);
         $objeto->set("telefone", $_POST["telefone"]);
+
+      
         
-        $row = $objeto->salvardados() ->fetch_assoc();
+        $row = $objeto->salvardados()->fetch_assoc();
         if(empty($row)){
             return "nada";
         }else{
