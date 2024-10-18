@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEKS.IO</title>
+    <style>
+        :root {
+            --rosa: #ff69b4;
+            --azul: #00bfff;
+            --azul-escuro: #00008b;
+            --branco: #ffffff;
+            --preto: #000000;
+            --roxo-claro: #dda0dd;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, var(--rosa), var(--azul));
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: var(--rosa);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--branco);
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--azul);
+            text-shadow: 0px 0px 8px var(--branco);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            background-color: var(--branco);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .main-content h1 {
+            color: var(--rosa);
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px var(--azul);
+        }
+
+        .posts {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0 auto;
+        }
+
+        /* Aumentando o campo de postagem */
+        .post-container {
+            width: 300px; /* Aumentado */
+            height: 350px; /* Aumentado */
+            border: 3px solid var(--azul-escuro);
+            border-radius: 15px; /* Bordas arredondadas */
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: flex-start; /* Alinhado ao topo */
+            margin-bottom: 10px;
+        }
+
+        .user-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column; /* Permite que os itens fiquem em coluna */
+        }
+
+        .user-info h3 {
+            color: var(--azul-escuro);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .location {
+            color: var(--azul-escuro);
+            font-size: 12px; /* Tamanho da fonte da localização */
+            margin: 0; /* Remove margem padrão */
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px; /* Aumentado */
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .post-actions button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--azul-escuro);
+        }
+
+        .post-actions button:hover {
+            color: var(--roxo-claro);
+        }
+
+        .post-actions .like-btn::before {
+            content: "💜";
+        }
+
+        .post-actions .comment-btn::before {
+            content: "💬";
+            color: var(--roxo-claro);
+        }
+
+        /* Diminuindo o campo dos pensamentos */
+        .thought-container {
+            width: 250px; /* Ajuste conforme necessário */
+            height: 180px; /* Ajuste conforme necessário */
+            border: 3px solid var(--azul-escuro);
+            border-radius: 10px; /* Bordas arredondadas */
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--branco);
+        }
+
+        .thought-title {
+            font-size: 16px; /* Ajustado */
+            color: var(--azul-escuro);
+            margin-bottom: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .thought-container .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .thought-container .user-info img {
+            width: 30px; /* Ajustado */
+            height: 30px; /* Ajustado */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .thought-container .user-info h3 {
+            color: var(--azul-escuro);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .thought-content {
+            width: 100%;
+            background-color: var(--branco);
+            color: var(--azul-escuro);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #ff69b4, #00bfff);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 3px dashed #ffccff;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: #ff00ff;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .footer a:hover {
+            background: #ff66b2;
+            transform: scale(1.1);
+        }
+
+        .footer a:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="pagprincipal.html">Início</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="chat.html">Mensagens</a></li>
+                <li><a href="sugestoes.html">Amigos</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>Bem-vindo ao SEKS.IO</h1>
+
+            <div class="posts">
+                <div class="post-container">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/30" alt="Foto do usuário">
+                        <div class="user-details">
+                            <h3>@UsuarioAleatorio</h3>
+                            <p class="location">Localização: São Paulo, SP</p> <!-- Campo de localização -->
+                        </div>
+                    </div>
+                    <img src="https://via.placeholder.com/150" alt="Foto postada" class="post-image">
+                    <div class="post-actions">
+                        <button class="like-btn"></button>
+                        <button class="comment-btn"></button>
+                    </div>
+                </div>
+
+                <div class="thought-container">
+                    <div class="thought-title">Pensamentos</div>
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/40" alt="Foto do usuário">
+                        <h3>@UsuarioAleatorio</h3>
+                    </div>
+                    <div class="thought-content">
+                        "lalalalala"
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+            <a href="#">Lenguage</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Need Help?</a>
+    </footer>
+</body>
+</html>
