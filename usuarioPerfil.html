@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Perfil do Usuário</title>
+    <style>
+        :root {
+            --rosa: #ff69b4;
+            --azul: #00bfff;
+            --azul-escuro: #00008b;
+            --branco: #ffffff;
+            --preto: #000000;
+            --roxo-claro: #dda0dd;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, var(--rosa), var(--azul));
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: var(--rosa);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--branco);
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--azul);
+            text-shadow: 0px 0px 8px var(--branco);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            background-color: var(--branco);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .perfil-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 2px solid #f0f0f0;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .foto-perfil {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .info-perfil {
+            flex: 1;
+        }
+
+        .usuario {
+            color: var(--preto);
+            margin: 5px 0;
+            font-size: 24px;
+        }
+
+        .bio {
+            color: var(--preto);
+        }
+
+        .editar {
+            background-color: var(--azul);
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--branco);
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .editar:hover {
+            background-color: var(--rosa);
+        }
+
+        .posts {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .post-container {
+            width: 300px;
+            height: 350px;
+            border: 3px solid var(--azul-escuro);
+            border-radius: 15px;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .post-actions button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--azul-escuro);
+        }
+
+        .post-actions button:hover {
+            color: var(--roxo-claro);
+        }
+
+        .post-actions .like-btn::before {
+            content: "💜";
+        }
+
+        .post-actions .comment-btn::before {
+            content: "💬";
+            color: var(--roxo-claro);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--rosa), var(--azul));
+            color: var(--branco);
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 3px dashed #ffccff;
+        }
+
+        .footer a {
+            color: var(--branco);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: var(--rosa);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .footer a:hover {
+            background: #ff66b2;
+            transform: scale(1.1);
+        }
+
+        .footer a:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Mensagens</a></li>
+                <li><a href="#">Notificações</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="perfil-header">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Foto de Perfil" class="foto-perfil">
+                <div class="info-perfil">
+                    <h1>Nome do Usuário</h1>
+                    <p class="usuario">@usuario123</p>
+                    <p class="bio">Amo viajar e explorar novos lugares! ✈️🌍</p>
+                    <button class="editar">Editar Perfil</button>
+                </div>
+            </div>
+
+            <div class="posts">
+                <div class="post-container">
+                    <img src="https://via.placeholder.com/150" alt="Postagem" class="post-image">
+                    <div class="post-actions">
+                        <button class="like-btn"></button>
+                        <button class="comment-btn"></button>
+                    </div>
+                </div>
+                <div class="post-container">
+                    <img src="https://via.placeholder.com/150" alt="Postagem" class="post-image">
+                    <div class="post-actions">
+                        <button class="like-btn"></button>
+                        <button class="comment-btn"></button>
+                    </div>
+                </div>
+                <div class="post-container">
+                    <img src="https://via.placeholder.com/150" alt="Postagem" class="post-image">
+                    <div class="post-actions">
+                        <button class="like-btn"></button>
+                        <button class="comment-btn"></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <a href="#">Linguagem</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Precisa de Ajuda?</a>
+    </footer>
+</body>
+</html>
