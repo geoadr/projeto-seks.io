@@ -74,6 +74,7 @@
             border: 2px solid #f0f0f0;
             padding: 20px;
             border-radius: 15px;
+            position: relative; /* Adicionado para posicionar a caixa de mensagem */
         }
 
         .foto-perfil {
@@ -110,6 +111,25 @@
 
         .editar:hover {
             background-color: var(--rosa);
+        }
+
+        .message-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--rosa);
+            border-radius: 50%;
+            position: absolute;
+            right: 20px; /* Distância da borda direita */
+            top: 20px; /* Distância do topo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .message-icon:hover {
+            transform: scale(1.1);
         }
 
         .posts {
@@ -221,6 +241,9 @@
                     <p class="usuario">@usuario123</p>
                     <p class="bio">Amo viajar e explorar novos lugares! ✈️🌍</p>
                     <button class="editar">Editar Perfil</button>
+                </div>
+                <div class="message-icon">
+                    <span>📩</span>
                 </div>
             </div>
 
