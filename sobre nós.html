@@ -70,7 +70,7 @@
             font-size: 16px;
         }
 
-        /* Estilos das abas */
+        
         .tab-container {
             display: flex;
             cursor: pointer;
@@ -106,20 +106,20 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Estilo ativo da aba */
+   
         .active {
             background-color: #ff66b2;
             color: white;
         }
 
-        /* Borda decorada para as imagens */
+       
         .decorated-image {
-            border: 6px double #ff3399; /* Bordas duplas rosas */
+            border: 6px double #ff3399; 
             padding: 10px;
             border-radius: 15px;
             margin-top: 20px;
             display: block;
-            width: 80%; /* Ajuste o tamanho da imagem */
+            width: 80%; 
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -175,20 +175,21 @@
         <div class="tab-content" id="quemSomos">
             <h2>Quem somos?</h2>
             <p>Bem-vindo ao seks.io, um espaço digital dedicado à conexão e comunidade, inspirado pelo espírito de redes sociais como o Orkut. Nós, os criadores por trás deste projeto, somos um grupo diversificado de seis mentes criativas apaixonadas por tecnologia e por criar espaços de interação significativos na internet.</p>
-            <!-- Imagem com borda decorada -->
-            <img src="exemplo-quem-somos.jpg" alt="Equipe Seks.io" class="decorated-image">
+            <img src="fotogp.jpeg" alt="Equipe Seks.io" class="decorated-image">
         </div>
 
         <div class="tab-content" id="historia">
             <h2>Nossa História</h2>
             <p>O Seks.io foi fundado por um grupo de entusiastas da tecnologia e apaixonados por redes sociais que desejavam reviver o charme e a simplicidade das plataformas de redes sociais antigas. Combinamos o melhor da nostalgia com a inovação moderna para criar uma experiência de usuário que seja ao mesmo tempo familiar e refrescante. Composto por Camila, Eduarda, Geovana, Ivo, Lara e Weikler, nossa equipe traz uma variedade de perspectivas e habilidades que nos permitem desenvolver uma plataforma inclusiva e acolhedora para todos os nossos usuários.</p>
-            <!-- Imagem com borda decorada -->
+
             <img src="nossahistoria.jpeg" alt="História Seks.io" class="decorated-image">
         </div>
 
         <div class="tab-content" id="compromisso">
             <h2>Nosso Compromisso</h2>
             <p>Estamos comprometidos em oferecer um ambiente seguro e amigável para todos os nossos usuários. Trabalhamos continuamente para melhorar nossa plataforma e garantir que você tenha a melhor experiência possível.</p>
+          
+             <img src="equipe.jpeg" alt="Equipe Seks.io" class="decorated-image"> 
         </div>
     </div>
 
@@ -202,28 +203,28 @@
 
     <script>
         function showTab(tabId) {
-            // Esconde todas as abas
+          
             var tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(function(content) {
                 content.style.display = 'none';
             });
 
-            // Remove a classe "active" de todas as abas
+            
             var tabs = document.querySelectorAll('.tab');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
             });
 
-            // Exibe o conteúdo da aba selecionada
+            
             var activeTab = document.getElementById(tabId);
             activeTab.style.display = 'block';
 
-            // Marca a aba como ativa
+            
             var activeTabButton = document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')"]');
             activeTabButton.classList.add('active');
         }
 
-        // Exibe a primeira aba por padrão
+        
         showTab('quemSomos');
     </script>
 </body>
